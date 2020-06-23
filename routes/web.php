@@ -41,3 +41,4 @@ Route::post('customer/update', 'CustomerController@update');
 
 Route::get('/profile', 'ProfileController@viewProfilePage');
 Route::get('/basic-information', 'ProfileController@viewBasicInfoPage');
+Route::post('basic-info/save', 'ProfileController@saveBasicInfo');

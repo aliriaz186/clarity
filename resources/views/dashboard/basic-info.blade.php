@@ -8,8 +8,12 @@
         <!--Begin::Row-->
         <form action="#" method="POST" id="listing_form" class="form-horizontal listing_form">
             {{ csrf_field() }}
+            <input hidden type="number" name="userId" id="userId"
+                   class="form-control" value="{{$basicInfo['userId'] ?? ''}}">
+
             <div class="row">
                 <div class="col-xl-12 order-lg-12 order-xl-12">
+
                     <div class="kt-portlet kt-portlet--mobile">
                         <div class="kt-portlet__head kt-portlet__head--lg">
                             <div class="kt-portlet__head-label">
@@ -28,27 +32,32 @@
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Your Name</span>
                                         </div>
-                                        <input type="text" name="email" id="email"
+                                        <input type="text" name="yourName" id="yourName"
                                                class="form-control"
-                                               placeholder="John Doe">
+                                               placeholder="John Doe" value="{{$basicInfo['yourName'] ?? ''}}">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Username</span>
                                         </div>
-                                        <input type="text" name="user-name" id="user-name"
+                                        <input type="text" name="username" id="username"
                                                class="form-control"
-                                               placeholder="Enter Your Username">
+                                               placeholder="Enter Your Username"
+                                               value="{{$basicInfo['username'] ?? ''}}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4">
+                            <div class="row mt-3">
                                 <div class="col-lg-6">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Short Bio</span>
                                         </div>
-                                        <input type="text" name="short-bio" id="short-bio"
+                                        <input type="text" name="shortBio" id="shortBio"
                                                class="form-control"
                                                placeholder="Your Short Bio">
                                     </div>
@@ -77,7 +86,7 @@
                                                 class="input-group-text" style="width: 100%"><span>Mini-Resume</span>
                                             </div>
                                         </div>
-                                        <textarea name="short-bio" id="short-bio"
+                                        <textarea name="miniResume" id="miniResume"
                                                   class="form-control" rows="5"></textarea>
                                     </div>
                                 </div>
@@ -88,12 +97,12 @@
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Email</span>
                                         </div>
-                                        <input disabled type="text" name="email" id="email"
+                                        <input readonly type="email" name="email" id="email"
                                                class="form-control"
-                                               placeholder="Example@abc.com">
+                                               placeholder="Example@abc.com" value="{{$basicInfo['email']}}">
                                     </div>
                                     <label class="text-muted mt-2">Please contact support to change your email
-                                        adress.</label>
+                                        address.</label>
                                 </div>
                             </div>
                         </div>
@@ -133,11 +142,16 @@
                                                class="form-control"
                                                placeholder="San Francisco, CA">
                                     </div>
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Your Timezone</span>
                                         </div>
-                                        <select name="time-zone" id="time-zone"
+                                        <select name="timeZone" id="timeZone"
                                                 class="form-control">
                                             <option>Select Timezone</option>
                                             <option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
@@ -305,7 +319,7 @@
                     // Specify validation rules
                     rules: {
                         name: {required: true},
-                        email: {email: true, required: true},
+                        // email: {email: true, required: true},
                         phone: {required: true, minlength: 10},
                         address: {required: true},
                         website: {required: true},
@@ -314,7 +328,7 @@
                     // Specify validation error messages
                     messages: {
                         name: "Please enter name",
-                        email: "Please enter email address",
+                        // email: "Please enter email address",
                         phone: {
                             required: "Please provide a phone number",
                             minlength: "Your phone number must be 10 characters long"
@@ -350,7 +364,7 @@
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         $.ajax({
-                            url: "{{env('APP_URL')}}/technician/save",
+                            url: "{{env('APP_URL')}}/basic-info/save",
                             type: 'POST',
                             dataType: "JSON",
                             data: data,
@@ -368,7 +382,7 @@
                                             "showConfirmButton": false,
                                             "timer": 1500,
                                             "onClose": function (e) {
-                                                window.location.href = `{{env('APP_URL')}}/technicians`
+                                                {{--window.location.href = `{{env('APP_URL')}}/technicians`--}}
                                             }
                                         })
                                     }, 2000);
