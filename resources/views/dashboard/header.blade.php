@@ -74,17 +74,13 @@
 
         <!-- begin:: Aside -->
 
-        <!-- Uncomment this to display the close button of the panel
-<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
--->
         <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
              id="kt_aside">
             <!-- begin:: Aside -->
             <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                 <div class="kt-aside__brand-logo">
                     <a href="#">
-                        <h3 style="color: white!important;">Dispatch</h3>
-{{--                        <img alt="Logo" src="{{asset('media/logos/logo-light.png')}}"/>--}}
+                        <h3 style="color: white!important;">Profile</h3>
                     </a>
                 </div>
             </div>
@@ -103,25 +99,26 @@
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/dashboard" class="kt-menu__link "><span
                                     class="kt-menu__link-icon"><i class="fas fa-clone"></i></span><span
                                     class="kt-menu__link-text">Dashboard</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'technicians') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/technicians" class="kt-menu__link "><span
-                                    class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span
-                                    class="kt-menu__link-text">Technicians</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'jobs') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/jobs" class="kt-menu__link "><span
-                                    class="kt-menu__link-icon"><i class="fas fa-briefcase"></i></span><span
-                                    class="kt-menu__link-text">Jobs</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'customers') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/customers" class="kt-menu__link "><span
-                                    class="kt-menu__link-icon"><i class="fas fa-user-tie"></i></span><span
-                                    class="kt-menu__link-text">Customers</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'reviews') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}reviews" class="kt-menu__link "><span
-                                    class="kt-menu__link-icon"><i class="fas flaticon-feed"></i></span><span
-                                    class="kt-menu__link-text">Reviews</span></a></li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="" class="kt-menu__link "><span
-                                    class="kt-menu__link-icon"><i class="far fa-chart-bar"></i></span><span
-                                    class="kt-menu__link-text">Reports</span></a></li>
+                        <li class="kt-menu__item kt-menu__item--submenu {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'cars') ? 'kt-menu__item--open' : '' }}"
+                            aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                                                                       class="kt-menu__link kt-menu__toggle"><span
+                                    class="kt-menu__link-icon"><i class="fas fa-user"></i></span><span
+                                    class="kt-menu__link-text">Edit Profile</span><i
+                                    class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                <ul class="kt-menu__subnav">
+                                    <li class="kt-menu__item {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--active' : '' }}"
+                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/basic-information"
+                                                                class="kt-menu__link "><i
+                                                class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                                class="kt-menu__link-text">Basic Information</span></a></li>
+                                    <li class="kt-menu__item {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--active' : '' }}"
+                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-photo" class="kt-menu__link "><i
+                                                class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                                class="kt-menu__link-text">Profile Photo</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -137,9 +134,6 @@
 
                 <!-- begin:: Header Menu -->
 
-                <!-- Uncomment this to display the close button of the panel
-                <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
-                -->
                 <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 
                 </div>

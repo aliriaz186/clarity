@@ -10,7 +10,7 @@
                         Total Technicians
                      </h3>
                  </div>
-                <h3 class="text-center">{{$technicianCount}}+</h3>
+                <h3 class="text-center">+</h3>
              </div>
          </div>
      </div>
@@ -22,7 +22,7 @@
                          Total Jobs
                      </h3>
                  </div>
-                 <h3 class="text-center">{{$jobsCount}}+</h3>
+                 <h3 class="text-center">+</h3>
              </div>
          </div>
      </div>
@@ -34,7 +34,7 @@
                          Total Customers
                      </h3>
                  </div>
-                 <h3 class="text-center">{{$customersCount}}+</h3>
+                 <h3 class="text-center">+</h3>
              </div>
          </div>
      </div>
