@@ -38,8 +38,8 @@ Route::get('customers', 'CustomerController@getView');
 Route::post('customers/all', 'CustomerController@getAll');
 Route::get('customers/manage/{id}', 'CustomerController@manage');
 Route::post('customer/update', 'CustomerController@update');
-
 Route::get('/profile', 'ProfileController@viewProfilePage');
 Route::get('/basic-information', 'ProfileController@viewBasicInfoPage');
 Route::get('signup', 'AuthController@showSignUpForm');
 //Route::get('login', 'AuthController@showLoginForm');
+Route::post('basic-info/save', 'ProfileController@saveBasicInfo');
