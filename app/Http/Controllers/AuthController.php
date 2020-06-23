@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
     //Displaying Auth Page
-    public function index()
+    public function loginForm()
     {
         if (Session::has('userId')) {
             return redirect('dashboard');
@@ -21,8 +22,8 @@ class AuthController extends Controller
     //Login Authentication
     public function login(Request $request)
     {
-        if (Admin::where('email', $request->email)->exists()) {
-            $dbUser = Admin::where('email', $request->email)->first();
+        if (User::where('email', $request->email)->exists()) {
+            $dbUser = User::where('email', $request->email)->first();
             if ($dbUser->password == md5($request->password)) {
                 Session::put('userId', $dbUser->id);
                 Session::put('isAdmin', true);
@@ -39,4 +40,19 @@ class AuthController extends Controller
         Session::flush();
         return json_encode(true);
     }
+
+    public function showSignUpForm()
+    {
+        return view('auth/signup');
+    }
+
+    public function register(Request $request)
+    {
+        $user=new User();
+        $user->name=$request->userName;
+        $user->email=$request->email;
+        $user->password=md5($request->password);
+        return json_encode($user->save());
+    }
+
 }

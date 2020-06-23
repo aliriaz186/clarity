@@ -709,7 +709,7 @@
                 $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             },
             success: function (result) {
-                window.location.href = `{{env('APP_URL')}}`
+                window.location.href = `{{env('APP_URL')}}/login`
 
             },
         });
