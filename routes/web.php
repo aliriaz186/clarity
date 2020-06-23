@@ -20,10 +20,10 @@ Route::get('/clear-cache', function() {
     \Illuminate\Support\Facades\Artisan::call('config:cache');
     // return what you want
 });
-Route::get('/', 'AuthController@index');
+Route::get('/login', 'AuthController@loginForm');
 Route::post('/admin/login', 'AuthController@login');
 Route::post('/signout', 'AuthController@signout');
-Route::get('dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index')->middleware('checkAuth');
 Route::get('technicians', 'TechnicianController@getView');
 Route::post('technicians/all', 'TechnicianController@getAll');
 Route::get('technicians/new', 'TechnicianController@newTechnicianView');
@@ -41,3 +41,5 @@ Route::post('customer/update', 'CustomerController@update');
 
 Route::get('/profile', 'ProfileController@viewProfilePage');
 Route::get('/basic-information', 'ProfileController@viewBasicInfoPage');
+Route::get('signup', 'AuthController@showSignUpForm');
+//Route::get('login', 'AuthController@showLoginForm');
