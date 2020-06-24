@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ProfileTable;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
@@ -72,4 +73,59 @@ class ProfileController extends Controller
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }
+
+    public function viewProfilePhotoPage()
+    {
+        if (ProfileTable::where('user_id', Session::get('userId'))->exists()) {
+            $profilePhoto = ProfileTable::where('user_id', Session::get('userId'))->first()['profile_photo'];
+        } else {
+            $profilePhoto = '';
+        }
+        return view('dashboard/profile-photo')->with(['profilePhoto' => $profilePhoto]);
+    }
+
+    public function updateProfilePhoto(Request $request)
+    {
+        try {
+            if (ProfileTable::where(['user_id' => Session::get('userId')])->exists()) {
+                $profileTable = ProfileTable::where(['user_id' => Session::get('userId')])->first();
+                if ($request->hasfile('files')) {
+                    $file = $request->file('files')[0];
+                    $name = time() . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path() . '/profile-pictures/', $name);
+                    if (!empty($profileTable->profile_photo)) {
+                        if (File::exists(public_path() . '/profile-pictures/' . $profileTable->profile_photo)) {
+                            File::delete(public_path() . '/profile-pictures/' . $profileTable->profile_photo);
+                        }
+                    }
+                    $profileTable->profile_photo = $name;
+                }
+                $profileTable->update();
+                return json_encode(['status' => true]);
+            } else {
+                $profileTable = new ProfileTable();
+                $profileTable->user_id = Session::get('userId');
+                $user = User::where('id', Session::get('userId'))->first();
+                $profileTable->user_name = $user->name;
+                $profileTable->email = $user->email;
+                if ($request->hasfile('files')) {
+                    $file = $request->file('files')[0];
+                    $name = time() . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path() . '/profile-pictures/', $name);
+                    if (!empty($profileTable->profile_photo)) {
+                        if (File::exists(public_path() . '/profile-pictures/' . $profileTable->profile_photo)) {
+                            File::delete(public_path() . '/profile-pictures/' . $profileTable->profile_photo);
+                        }
+                    }
+                    $profileTable->profile_photo = $name;
+                }
+                $profileTable->save();
+                return json_encode(['status' => true]);
+            }
+
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => 'Failed to save data. There is error on server side!', 'error' => $exception->getMessage()]);
+        }
+    }
+
 }
