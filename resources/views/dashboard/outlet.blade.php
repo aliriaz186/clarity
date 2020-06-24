@@ -8,8 +8,10 @@
         <!--Begin::Row-->
         <form action="#" method="POST" id="listing_form" class="form-horizontal listing_form">
             {{ csrf_field() }}
+
             <div class="row">
                 <div class="col-xl-12 order-lg-12 order-xl-12">
+
                     <div class="kt-portlet kt-portlet--mobile">
                         <div class="kt-portlet__head kt-portlet__head--lg">
                             <div class="kt-portlet__head-label">
@@ -17,54 +19,37 @@
                                 <i class="kt-font-brand fas fa-user"></i>
                             </span>
                                 <h3 class="kt-portlet__head-title">
-                                    Edit Customer
+                                    Add Multiple Outlets
                                 </h3>
                             </div>
                         </div>
-                        <input type="hidden" name="id" id="id"
-                               class="form-control" value="{{$customer->id}}">
+
                         <div class="kt-portlet__body">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <label class=""> Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control"
-                                           placeholder="Enter full name" value="{{$customer->name}}">
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>Email <span class="text-danger">*</span></label>
+                                <div class="col-lg-6">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                                    class="fa fa-envelope"></i></span></div>
-                                        <input type="text" name="email" id="email"
+                                        <div class="input-group-prepend" style="width: 32%"><span
+                                                class="input-group-text" style="width: 100%">Outlet Name</span>
+                                        </div>
+                                        <input type="text" name="outlet" id="outlet"
                                                class="form-control"
-                                               placeholder="Enter email" value="{{$customer->email}}">
+                                               placeholder="Press Enter to Add Multiple Outlets"
+                                               onkeypress="addMultipleOutlets(event)">
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <label>Phone <span class="text-danger">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                                    class="fa fa-phone"></i></span></div>
-                                        <input type="text" name="phone" id="phone"
-                                               class="form-control"
-                                               placeholder="" value="{{$customer->phone}}">
-                                    </div>
+                                <div class="mt-2 col-lg-12">
+                                    @foreach($outletList as $outlet)
+                                        <span class="small my-2">
+                                             <span
+                                                 style="background-color: #f8f8f8;padding: 5px 13px;border: 1px solid #d0d0d0;border-radius: 4px;color: black;">{{$outlet->name}}<span
+                                                     class="remove-recipient-button cursor-pointer"
+                                                     style="color: red;margin-left: 10px;cursor: pointer"
+                                                     onclick="deleteOutlet({{$outlet->id}})"><i
+                                                         class="fas fa-times"></i></span></span></span>
+                                    @endforeach
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="kt-portlet kt-portlet--mobile">
-                        <div class="kt-portlet__foot">
-                            <div class="kt-form__actions">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        |
-                                        <a href="{{env('APP_URL')}}/customers" class="btn btn-warning">Go Back</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <label class="text-muted mt-4">Type and Press Enter to Add Multiple Outlets</label>
                         </div>
                     </div>
 
@@ -76,37 +61,17 @@
     <!-- end:: Content -->
     <script>
 
-        $(document).ready(function () {
-            KTApp.blockPage({
-                baseZ: 2000,
-                overlayColor: '#000000',
-                type: 'v1',
-                state: 'danger',
-                opacity: 0.15,
-                message: 'Loading Please Wait...'
-            });
-            setTimeout(function () {
-                KTApp.unblockPage();
-            }, 3000);
-
-            $(function () {
+        function addMultipleOutlets(event) {
+            if (event.keyCode === 13) {
                 // Initialize form validation.
                 $(".listing_form").validate({
                     // Specify validation rules
                     rules: {
-                        name: {required: true},
-                        email: {email: true, required: true},
-                        phone: {required: true, minlength: 10},
-
+                        outlet: {required: true},
                     },
                     // Specify validation error messages
                     messages: {
-                        name: "Please enter name",
-                        email: "Please enter email address",
-                        phone: {
-                            required: "Please provide a phone number",
-                            minlength: "Your phone number must be 10 characters long"
-                        },
+                        outlet: "Outlet name is required",
                     },
                     // Invalid Handler message
                     invalidHandler: function (event, validator) {
@@ -136,7 +101,7 @@
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         $.ajax({
-                            url: "{{env('APP_URL')}}/customer/update",
+                            url: "{{env('APP_URL')}}/outlet/save",
                             type: 'POST',
                             dataType: "JSON",
                             data: data,
@@ -154,7 +119,7 @@
                                             "showConfirmButton": false,
                                             "timer": 1500,
                                             "onClose": function (e) {
-                                                window.location.href = `{{env('APP_URL')}}/customers`
+                                                window.location.href = `{{env('APP_URL')}}/outlet`
                                             }
                                         })
                                     }, 2000);
@@ -178,9 +143,69 @@
                         });
                     }
                 });
+
+            }
+        }
+
+        function deleteOutlet(outletId) {
+            KTApp.blockPage({
+                baseZ: 2000,
+                overlayColor: '#000000',
+                type: 'v1',
+                state: 'danger',
+                opacity: 0.15,
+                message: 'Processing...'
+            });
+            var formData = new FormData();
+            formData.append("outletId", outletId);
+            formData.append("_token", "{{ csrf_token() }}");
+            $.ajax
+            ({
+                type:'POST',
+                url: `{{env('APP_URL')}}/outlet/delete`,
+                dataType: "JSON",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData:false,
+                success: function (result) {
+                    if (result['status']) {
+                        // Disable Page Loading and show confirmation
+                        setTimeout(function () {
+                            KTApp.unblockPage();
+                        }, 1000);
+                        setTimeout(function () {
+                            swal.fire({
+                                "title": "",
+                                "text": "Deleted Successfully",
+                                "type": "success",
+                                "showConfirmButton": false,
+                                "timer": 1500,
+                                "onClose": function (e) {
+                                    window.location.href = `{{env('APP_URL')}}/outlet`
+                                }
+                            })
+                        }, 2000);
+                    } else {
+                        setTimeout(function () {
+                            KTApp.unblockPage();
+                        }, 1000);
+                        setTimeout(function () {
+                            swal.fire({
+                                "title": "",
+                                "text": result['message'],
+                                "type": "error",
+                                "confirmButtonClass": "btn btn-secondary",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            })
+                        }, 2000);
+                    }
+                }
             });
 
-        });
+        }
 
     </script>
 @endsection

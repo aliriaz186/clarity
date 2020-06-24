@@ -24,25 +24,16 @@ Route::get('/login', 'AuthController@loginForm');
 Route::post('/admin/login', 'AuthController@login');
 Route::post('/signout', 'AuthController@signout');
 Route::get('dashboard', 'DashboardController@index')->middleware('checkAuth');
-Route::get('technicians', 'TechnicianController@getView');
-Route::post('technicians/all', 'TechnicianController@getAll');
-Route::get('technicians/new', 'TechnicianController@newTechnicianView');
-Route::post('technician/save', 'TechnicianController@saveTechnician');
-Route::get('technicians/manage/{id}', 'TechnicianController@manageTechnician');
-Route::post('technicians/update', 'TechnicianController@updateTechnician');
-Route::get('jobs', 'JobsController@getView');
-Route::post('jobs/all', 'JobsController@getAll');
-Route::get('jobs/new', 'JobsController@newJobView');
-Route::post('job/save', 'JobsController@saveJob');
-Route::get('customers', 'CustomerController@getView');
-Route::post('customers/all', 'CustomerController@getAll');
-Route::get('customers/manage/{id}', 'CustomerController@manage');
-Route::post('customer/update', 'CustomerController@update');
 
 //Talha's routes
 Route::get('/profile', 'ProfileController@viewProfilePage');
 Route::get('/basic-information', 'ProfileController@viewBasicInfoPage');
 Route::post('basic-info/save', 'ProfileController@saveBasicInfo');
+Route::get('/profile-photo', 'ProfileController@viewProfilePhotoPage');
+Route::post('/profile/update', 'ProfileController@updateProfilePhoto');
+Route::get('/outlet', 'ProfileController@viewOutletPage');
+Route::post('outlet/save', 'ProfileController@saveOutletInfo');
+Route::post('outlet/delete', 'ProfileController@deleteOutlet');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');
