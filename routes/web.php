@@ -29,9 +29,11 @@ Route::get('dashboard', 'DashboardController@index')->middleware('checkAuth');
 Route::get('/profile', 'ProfileController@viewProfilePage');
 Route::get('/basic-information', 'ProfileController@viewBasicInfoPage');
 Route::post('basic-info/save', 'ProfileController@saveBasicInfo');
-Route::post('basic-info/save', 'ProfileController@saveBasicInfo');
 Route::get('/profile-photo', 'ProfileController@viewProfilePhotoPage');
 Route::post('/profile/update', 'ProfileController@updateProfilePhoto');
+Route::get('/outlet', 'ProfileController@viewOutletPage');
+Route::post('outlet/save', 'ProfileController@saveOutletInfo');
+Route::post('outlet/delete', 'ProfileController@deleteOutlet');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');
