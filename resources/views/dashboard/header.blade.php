@@ -99,7 +99,7 @@
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/dashboard" class="kt-menu__link "><span
                                     class="kt-menu__link-icon"><i class="fas fa-clone"></i></span><span
                                     class="kt-menu__link-text">Dashboard</span></a></li>
-                        <li class="kt-menu__item kt-menu__item--submenu {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'cars') ? 'kt-menu__item--open' : '' }}"
+                        <li class="kt-menu__item kt-menu__item--submenu {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--open' : '' }}"
                             aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
                                                                                        class="kt-menu__link kt-menu__toggle"><span
                                     class="kt-menu__link-icon"><i class="fas fa-user"></i></span><span
