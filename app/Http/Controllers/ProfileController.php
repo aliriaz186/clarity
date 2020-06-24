@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\OutletTable;
 use App\ProfileTable;
 use App\User;
 use Illuminate\Http\Request;
@@ -125,6 +126,46 @@ class ProfileController extends Controller
 
         } catch (\Exception $exception) {
             return json_encode(['status' => false, 'message' => 'Failed to save data. There is error on server side!', 'error' => $exception->getMessage()]);
+        }
+    }
+
+    public function viewOutletPage()
+    {
+        if (OutletTable::where('user_id', Session::get('userId'))->exists()) {
+            $outletList = OutletTable::where('user_id', Session::get('userId'))->get();
+        } else {
+            $outletList = [];
+        }
+        return view('dashboard/outlet')->with(['outletList' => $outletList]);
+    }
+
+    public function saveOutletInfo(Request $request)
+    {
+        try {
+            if (!OutletTable::where(['user_id' => Session::get('userId'), 'name' => $request->outlet])->exists()) {
+                $outletTable = new OutletTable();
+                $outletTable->user_id = Session::get('userId');
+                $outletTable->name = $request->outlet;
+                return json_encode(['status' => $outletTable->save()]);
+            } else {
+                return json_encode(['status' => false, 'message' => 'Outlet Already Exists']);
+            }
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function deleteOutlet(Request $request)
+    {
+        try {
+            if (OutletTable::where('id', $request->outletId)->exists()) {
+                $outletTable = OutletTable::where('id', $request->outletId)->first();
+                return json_encode(['status' => $outletTable->delete()]);
+            } else {
+                return json_encode(['status' => false, 'message' => 'Outlet Doesnot Exists']);
+            }
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }
 
