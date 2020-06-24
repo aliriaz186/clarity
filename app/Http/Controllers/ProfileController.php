@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ExpertiseAreaTable;
 use App\OutletTable;
 use App\ProfileTable;
 use App\User;
@@ -165,6 +166,81 @@ class ProfileController extends Controller
                 return json_encode(['status' => false, 'message' => 'Outlet Doesnot Exists']);
             }
         } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function updateInfo(Request $request)
+    {
+        try {
+            if (ProfileTable::where('user_id', $request->idUser)->exists()) {
+                $profileTable = ProfileTable::where('user_id', $request->idUser)->first();
+                $profileTable->user_name = $request->userName;
+                $profileTable->email = $request->email;
+                $profileTable->cell_phone = $request->cellPhone;
+                $profileTable->your_timezone = $request->timeZone;
+                return json_encode($profileTable->update());
+            } else {
+                $profileTable = new ProfileTable();
+                $profileTable->user_name = $request->userName;
+                $profileTable->user_id = $request->idUser;
+                $profileTable->email = $request->email;
+                $profileTable->cell_phone = $request->cellPhone;
+                $profileTable->your_timezone = $request->timeZone;
+                return json_encode($profileTable->save());
+            }
+
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+
+    public function updateNextInfo(Request $request)
+    {
+        try {
+
+            if (ProfileTable::where('user_id', $request->idUser)->exists()) {
+                $profileTable = ProfileTable::where('user_id', $request->idUser)->first();
+                $profileTable->short_bio = $request->shortBio;
+                $profileTable->mini_resume = $request->resume;
+                $profileTable->hourly_rate = $request->hourlyRate;
+                return json_encode($profileTable->update());
+            } else {
+                $profileTable =ProfileTable::where('user_id',$request->idUser)->first();
+                $profileTable->user_id = $request->idUser;
+                $profileTable->short_bio = $request->shortBio;
+                $profileTable->mini_resume = $request->resume;
+                $profileTable->hourly_rate = $request->hourlyRate;
+                return json_encode($profileTable->save());
+            }
+
+        } catch (\Exception $exception) {
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
+    public function expertiseSave(Request $request){
+
+        try{
+            $expetiseTable=new ExpertiseAreaTable();
+            $fileName="";
+            if($request->hasFile('cover_image')){
+                $brand_logo= $request->file('cover_image');
+                $fileName = time().'.'.$brand_logo->getClientOriginalExtension();
+                $request->cover_image->move(public_path('img/cover'), $fileName);
+                if(!File::exists(public_path('img/cover/'. $fileName))) {  // check file exists in directory or not
+                    return json_encode("Image is not uploaded!", 401);
+                }
+                $input["image"] = $fileName;
+            }
+            $expetiseTable->cover_image=$fileName;
+            $expetiseTable->title=$request->title;
+            $expetiseTable->category=$request->category;
+            $expetiseTable->description=$request->description;
+            $expetiseTable->id_user=$request->userId;
+            $expetiseTable->expertise_tags=$request->tags;
+            return json_encode( $expetiseTable->save());
+        }
+        catch (\Exception $exception){
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }

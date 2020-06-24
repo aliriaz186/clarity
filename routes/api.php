@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('technicians/get', 'TechnicianController@getTechnicians');
 Route::post('register', 'AuthController@register');
+Route::post('update/info', 'ProfileController@updateInfo');
+Route::post('update/next/info', 'ProfileController@updateNextInfo');
+Route::post('expertise/save', 'ProfileController@expertiseSave');

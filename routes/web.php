@@ -37,4 +37,7 @@ Route::post('outlet/delete', 'ProfileController@deleteOutlet');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');
-//Route::get('login', 'AuthController@showLoginForm');
+Route::get('expert-info-page', 'DashboardController@expertiInfo');
+Route::get('next/info', 'DashboardController@nextExpertInfo');
+Route::get('expertise/listing', 'DashboardController@expertiseListing');
+Route::get('expertise/listing/view', 'DashboardController@expertiseListingView');
