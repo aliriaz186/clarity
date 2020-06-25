@@ -62,3 +62,44 @@
     color: #ccc;
     opacity: 1;
 }
+
+.errorTxt{
+    /*border: 1px solid red;*/
+    min-height: 20px;
+}
+
+#errorCardNumberText{
+    color: red!important;
+}
+
+#errorCVVText{
+    color: red!important;
+}
+
+#errorAddressText{
+    color: red!important;
+}
+
+#errorCountryText{
+    color: red!important;
+}
+
+#errorPostalCodeText{
+    color: red!important;
+}
+
+#errorStateText{
+    color: red!important;
+}
+
+#errorCityText{
+    color: red!important;
+}
+
+#errorMonthText{
+    color: red!important;
+}
+
+#errorYearText{
+    color: red!important;
+}

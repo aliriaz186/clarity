@@ -127,6 +127,10 @@
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page" class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><i class="fas fa-clone"></i></span><span
                                         class="kt-menu__link-text">Apply to be an expert</span></a></li>
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'payment') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/payment" class="kt-menu__link "><span
+                                    class="kt-menu__link-icon"><i class="fab fa-cc-mastercard"></i></span><span
+                                    class="kt-menu__link-text">Payment</span></a></li>
                     </ul>
                 </div>
             </div>
