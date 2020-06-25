@@ -187,7 +187,7 @@
                     // document.getElementById('user_password').value = '';
                     if (result) {
                         alert("expertise saved successfully");
-                        {{--window.location.href = `{{env('APP_URL')}}/expertise/listing`--}}
+                        window.location.href = `{{env('APP_URL')}}/expertise/listing/view`
                     } else {
                         setTimeout(function () {
                             alert("server error")

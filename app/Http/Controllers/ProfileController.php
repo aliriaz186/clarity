@@ -257,8 +257,8 @@ class ProfileController extends Controller
                     return json_encode("Image is not uploaded!", 401);
                 }
                 $input["image"] = $fileName;
+                $expetiseTable->cover_image=$fileName;
             }
-            $expetiseTable->cover_image=$fileName;
             $expetiseTable->title=$request->title;
             $expetiseTable->category=$request->category;
             $expetiseTable->description=$request->description;
