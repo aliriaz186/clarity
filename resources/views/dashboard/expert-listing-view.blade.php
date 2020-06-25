@@ -28,7 +28,7 @@
                             <tr>
                                 <td style="width: 10%!important;"><img src="{{asset('/img/cover/')}}/{{$expertListing->cover_image}}" style="width: 150px; height: 100px;object-fit: contain!important;"></td>
                                 <td style="text-align: left!important;width: 50%!important;"><h3>{{$expertListing->title}}</h3><p>{{$expertListing->description}}</p></td>
-                                <td style="width: 20%!important;"><button type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;">Edit</button></td>
+                                <td style="width: 20%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise-edit/{{$expertListing->id}}">Edit</a></td>
                             </tr>
                             </tbody>
                         </table>

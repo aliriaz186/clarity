@@ -15,10 +15,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $customersCount = Customer::all()->count();
-        $technicianCount = Technician::all()->count();
-        $jobsCount = Job::all()->count();
-        return view('dashboard/dashboard')->with(['customersCount' => $customersCount,'technicianCount' => $technicianCount,'jobsCount' => $jobsCount]);
+        $profileTable=ProfileTable::where('user_id',Session::get('userId'))->first();
+        $user = User::where('id', Session::get('userId'))->first();
+        return view('dashboard/dashboard')->with(["profileTable"=>$profileTable]);
     }
 
     public function expertiInfo()
@@ -94,5 +93,11 @@ class DashboardController extends Controller
         $user = User::where('id', Session::get('userId'))->first();
         $basicInfo['userId'] = $user->id;
         return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo,'expertListing'=>$expertListing]);
+    }
+    public function editExpertise(int $id){
+        $user = User::where('id', Session::get('userId'))->first();
+        $basicInfo['userId'] = $user->id;
+        $expertListing=ExpertiseAreaTable::where('id',$id)->first();
+        return view('dashboard/edit-expertise')->with(['expertListing'=>$expertListing,'basicInfo' => $basicInfo]);
     }
 }
