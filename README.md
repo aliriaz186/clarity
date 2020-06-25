@@ -1,2 +1,2 @@
-# clarify
-clarify
+# clarity
+clarity

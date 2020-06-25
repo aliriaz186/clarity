@@ -132,6 +132,10 @@
                                                     class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
                                         class="kt-menu__link-text">Calls Requests</span></a></li>
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'payment') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/payment" class="kt-menu__link "><span
+                                    class="kt-menu__link-icon"><i class="fab fa-cc-mastercard"></i></span><span
+                                    class="kt-menu__link-text">Payment</span></a></li>
                     </ul>
                 </div>
             </div>
