@@ -125,8 +125,13 @@
                         </li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'expert-info-page') ? 'kt-menu__item--active' : '' }}"
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page" class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-clone"></i></span><span
+                                        class="kt-menu__link-icon"><i class="fas fa-user-graduate"></i></span><span
                                         class="kt-menu__link-text">Apply to be an expert</span></a></li>
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'expert-info-page') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/call-request"
+                                                    class="kt-menu__link "><span
+                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
+                                        class="kt-menu__link-text">Calls Requests</span></a></li>
                     </ul>
                 </div>
             </div>

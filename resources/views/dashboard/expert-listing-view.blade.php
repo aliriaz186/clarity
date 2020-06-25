@@ -26,12 +26,38 @@
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <td style="width: 10%!important;"><img src="{{asset('/img/cover/')}}/{{$expertListing->cover_image}}" style="width: 150px; height: 100px;object-fit: contain!important;"></td>
-                                <td style="text-align: left!important;width: 50%!important;"><h3>{{$expertListing->title}}</h3><p>{{$expertListing->description}}</p></td>
-                                <td style="width: 20%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise-edit/{{$expertListing->id}}">Edit</a></td>
+                                <td style="width: 10%!important;"><img src="{{asset('/img/cover/')}}/{{$expertListing->cover_image ?? ''}}" style="width: 150px; height: 100px;object-fit: contain!important;"></td>
+                                <td style="text-align: left!important;width: 50%!important;"><h3>{{$expertListing->title ?? ''}}</h3><p>{{$expertListing->description ?? ''}}</p></td>
+                                <td style="width: 20%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise-edit/{{$expertListing->id ?? ''}}">Edit</a></td>
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="kt-portlet__body">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                @if($status==false)
+                                <td style="width: 61%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise/listing">New Area of Expertise</a></td>
+                            @endif
+                            @if($clarityUsing==true)
+                                <td style="width: 20%!important;"><a type="button" class="btn btn-warning" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/clarity-using/{{$expertListing->id ?? ''}}">Start using Clarity</a>
+                                </td>
+                                @endif
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-top: 5px!important;">
+                            @if ($errors->any())
+                                <div class="alert alert-warning">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

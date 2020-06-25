@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\CallRequestTable;
 use App\Customer;
 use App\ExpertiseAreaTable;
+use App\ExpertiseReviewTable;
 use App\Job;
 use App\ProfileTable;
 use App\Technician;
@@ -15,9 +17,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $profileTable=ProfileTable::where('user_id',Session::get('userId'))->first();
+        $profileTable = ProfileTable::where('user_id', Session::get('userId'))->first();
         $user = User::where('id', Session::get('userId'))->first();
-        return view('dashboard/dashboard')->with(["profileTable"=>$profileTable]);
+        return view('dashboard/dashboard')->with(["profileTable" => $profileTable]);
     }
 
     public function expertiInfo()
@@ -82,22 +84,64 @@ class DashboardController extends Controller
 
     public function expertiseListing()
     {
-            $user = User::where('id', Session::get('userId'))->first();
-            $basicInfo['userId'] = $user->id;
+        $user = User::where('id', Session::get('userId'))->first();
+        $basicInfo['userId'] = $user->id;
         return view('dashboard/expertise-listing')->with(['basicInfo' => $basicInfo]);
     }
 
     public function expertiseListingView()
     {
-        $expertListing=ExpertiseAreaTable::where('id_user',Session::get('userId'))->first();
-        $user = User::where('id', Session::get('userId'))->first();
-        $basicInfo['userId'] = $user->id;
-        return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo,'expertListing'=>$expertListing]);
+        if (ExpertiseAreaTable::where('id_user',Session::get('userId'))->exists()){
+            $status=true;
+            $expertListing = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first();
+            $user = User::where('id', Session::get('userId'))->first();
+            $basicInfo['userId'] = $user->id;
+            if (ExpertiseReviewTable::where('id_user',Session::get('userId'))->exists()){
+                $clarityUsing=false;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+            }
+            else{
+                $clarityUsing=true;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+            }
+        }
+        else{
+            $status=false;
+            $expertListing = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first();
+            $user = User::where('id', Session::get('userId'))->first();
+            $basicInfo['userId'] = $user->id;
+            if (ExpertiseReviewTable::where('id_user',Session::get('userId'))->exists()){
+                $clarityUsing=false;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+            }
+            else{
+                $clarityUsing=true;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+            }
+        }
     }
-    public function editExpertise(int $id){
+
+    public function editExpertise(int $id)
+    {
         $user = User::where('id', Session::get('userId'))->first();
         $basicInfo['userId'] = $user->id;
-        $expertListing=ExpertiseAreaTable::where('id',$id)->first();
-        return view('dashboard/edit-expertise')->with(['expertListing'=>$expertListing,'basicInfo' => $basicInfo]);
+        $expertListing = ExpertiseAreaTable::where('id', $id)->first();
+        return view('dashboard/edit-expertise')->with(['expertListing' => $expertListing, 'basicInfo' => $basicInfo]);
+    }
+
+    public function clarityUsing(int $id)
+    {
+        $expertiseReview=new ExpertiseReviewTable();
+        $expertiseReview->id_expertise=$id;
+        $expertiseReview->id_user=Session::get('userId');
+        $expertiseReview->status='pending';
+        $expertiseReview->save();
+        return redirect()->back()->withErrors("Your Request has been recieved our team will contact you in 24 hours");
+    }
+
+    public function showCallRequests()
+    {
+        $callRequests=CallRequestTable::where('id_journalist',Session::get('userId'))->get();
+        return view('dashboard/call-requests')->with(['callRequests'=>$callRequests]);
     }
 }
