@@ -40,7 +40,7 @@
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                     class="input-group-text" style="width: 100%;font-weight: bold!important;">Email</span>
                                         </div>
-                                        <input type="text" name="yourName" id="email"
+                                        <input type="text" name="yourName" readonly id="email"
                                                class="form-control"
                                                placeholder="John Doe" value="{{$basicInfo['email'] ?? ''}}">
                                     </div>

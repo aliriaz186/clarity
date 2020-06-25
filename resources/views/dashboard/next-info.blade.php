@@ -73,46 +73,46 @@
                                             <option selected="selected" value="">Select an hourly rate</option>
 
 
-                                            <option value="60">$60</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "60" ? 'selected' : ''}} value="60">$60</option>
 
 
-                                            <option value="100">$100</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "100" ? 'selected' : ''}} value="100">$100</option>
 
 
-                                            <option value="120">$120</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "120" ? 'selected' : ''}} value="120">$120</option>
 
 
-                                            <option value="150">$150</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "150" ? 'selected' : ''}} value="150">$150</option>
 
 
-                                            <option value="175">$175</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "175" ? 'selected' : ''}} value="175">$175</option>
 
 
-                                            <option value="200">$200</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "200" ? 'selected' : ''}} value="200">$200</option>
 
 
-                                            <option value="250">$250</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "250" ? 'selected' : ''}} value="250">$250</option>
 
 
-                                            <option value="300">$300</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "300" ? 'selected' : ''}} value="300">$300</option>
 
 
-                                            <option value="350">$350</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "350" ? 'selected' : ''}} value="350">$350</option>
 
 
-                                            <option value="400">$400</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "400" ? 'selected' : ''}} value="400">$400</option>
 
 
-                                            <option value="450">$450</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "450" ? 'selected' : ''}} value="450">$450</option>
 
 
-                                            <option value="500">$500</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "500" ? 'selected' : ''}} value="500">$500</option>
 
 
-                                            <option value="600">$600</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "600" ? 'selected' : ''}} value="600">$600</option>
 
 
-                                            <option value="1000">$1,000</option>
+                                            <option  {{$basicInfo['hourlyRate'] == "1000" ? 'selected' : ''}} value="1000">$1,000</option>
                                         </select>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                         <button type="button" class="btn btn-primary" onclick="updateInfo()">Save
                                         </button>
                                         |
-                                        <a href="{{env('APP_URL')}}/technicians" class="btn btn-warning">Go Back</a>
+                                        <a href="{{env('APP_URL')}}/expert-info-page" class="btn btn-warning">Go Back</a>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
                 success: function (result) {
                     // document.getElementById('user_password').value = '';
                     if (result) {
-                        window.location.href = `{{env('APP_URL')}}/expertise/listing`
+                        window.location.href = `{{env('APP_URL')}}/expertise/listing/view`
                     } else {
                         setTimeout(function () {
                             alert("server error")

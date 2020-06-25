@@ -94,4 +94,10 @@ class DashboardController extends Controller
         $basicInfo['userId'] = $user->id;
         return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo,'expertListing'=>$expertListing]);
     }
+    public function editExpertise(int $id){
+        $user = User::where('id', Session::get('userId'))->first();
+        $basicInfo['userId'] = $user->id;
+        $expertListing=ExpertiseAreaTable::where('id',$id)->first();
+        return view('dashboard/edit-expertise')->with(['expertListing'=>$expertListing,'basicInfo' => $basicInfo]);
+    }
 }

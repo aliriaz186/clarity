@@ -244,5 +244,30 @@ class ProfileController extends Controller
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }
+    public function expertiseUpdate(Request $request){
 
+        try{
+            $expetiseTable=ExpertiseAreaTable::where('id',$request->expertiseId)->first();
+            $fileName="";
+            if($request->hasFile('cover_image')){
+                $brand_logo= $request->file('cover_image');
+                $fileName = time().'.'.$brand_logo->getClientOriginalExtension();
+                $request->cover_image->move(public_path('img/cover'), $fileName);
+                if(!File::exists(public_path('img/cover/'. $fileName))) {  // check file exists in directory or not
+                    return json_encode("Image is not uploaded!", 401);
+                }
+                $input["image"] = $fileName;
+            }
+            $expetiseTable->cover_image=$fileName;
+            $expetiseTable->title=$request->title;
+            $expetiseTable->category=$request->category;
+            $expetiseTable->description=$request->description;
+            $expetiseTable->id_user=$request->userId;
+            $expetiseTable->expertise_tags=$request->tags;
+            return json_encode( $expetiseTable->update());
+        }
+        catch (\Exception $exception){
+            return json_encode(['status' => false, 'message' => $exception->getMessage()]);
+        }
+    }
 }

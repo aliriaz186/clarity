@@ -41,3 +41,4 @@ Route::get('expert-info-page', 'DashboardController@expertiInfo');
 Route::get('next/info', 'DashboardController@nextExpertInfo');
 Route::get('expertise/listing', 'DashboardController@expertiseListing');
 Route::get('expertise/listing/view', 'DashboardController@expertiseListingView');
+Route::get('expertise-edit/{id}', 'DashboardController@editExpertise');
