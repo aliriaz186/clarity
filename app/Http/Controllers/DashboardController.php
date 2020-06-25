@@ -15,10 +15,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $customersCount = Customer::all()->count();
-        $technicianCount = Technician::all()->count();
-        $jobsCount = Job::all()->count();
-        return view('dashboard/dashboard')->with(['customersCount' => $customersCount,'technicianCount' => $technicianCount,'jobsCount' => $jobsCount]);
+        $profileTable=ProfileTable::where('user_id',Session::get('userId'))->first();
+        $user = User::where('id', Session::get('userId'))->first();
+        return view('dashboard/dashboard')->with(["profileTable"=>$profileTable]);
     }
 
     public function expertiInfo()
