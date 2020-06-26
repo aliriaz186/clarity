@@ -46,3 +46,4 @@ Route::get('expertise/listing/view', 'DashboardController@expertiseListingView')
 Route::get('expertise-edit/{id}', 'DashboardController@editExpertise');
 Route::get('clarity-using/{id}', 'DashboardController@clarityUsing');
 Route::get('call-request', 'DashboardController@showCallRequests');
+Route::get('calls', 'DashboardController@showCallHistory');
