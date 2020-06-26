@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('landing-page.layout')
 <!-- begin:: Content -->
 @section('content')
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
@@ -13,10 +13,118 @@
                 <div class="col-xl-12 order-lg-12 order-xl-12">
 
                     <div class="kt-portlet kt-portlet--mobile">
+                    </div>
+
+                    <div class="kt-portlet kt-portlet--mobile">
                         <div class="kt-portlet__head kt-portlet__head--lg">
                             <div class="kt-portlet__head-label">
                             <span class="kt-portlet__head-icon">
-                                <i class="kt-font-brand far fa-credit-card"></i>
+                                <span
+                                    style="display: inline-block;width: 26px;height: 25px;line-height: 24px;border: 1px solid #61bed9;border-radius: 50%;text-align: center;font-size: 15px;font-weight: 500;color: #61bed9;position: relative">1</span>
+                            </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Provide Call Information
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 32%">
+                                            <div
+                                                class="input-group-text" style="width: 100%">
+                                                <span>Message to Person</span>
+                                            </div>
+                                        </div>
+                                        <textarea name="message" id="message"
+                                                  class="form-control" placeholder="Please enter a reason for the call"
+                                                  rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 32%"><span
+                                                class="input-group-text" style="width: 100%">Set Estimated Length</span>
+                                        </div>
+                                        <select name="estimatedLength" id="estimatedLength"
+                                                class="form-control">
+                                            <option>15 minutes</option>
+                                            <option>30 minutes</option>
+                                            <option>1 hour</option>
+                                        </select></div>
+                                    <div class="text-muted mt-2">You will be charged $25.00 for the current scheduled call length. If the call goes over the scheduled time, you will be charged the balance at a rate of $1.67/min. If the call goes less than the scheduled time, you will be refunded the balance.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet kt-portlet--mobile">
+                        <div class="kt-portlet__head kt-portlet__head--lg">
+                            <div class="kt-portlet__head-label">
+                            <span class="kt-portlet__head-icon">
+                                <span
+                                    style="display: inline-block;width: 26px;height: 25px;line-height: 24px;border: 1px solid #61bed9;border-radius: 50%;text-align: center;font-size: 15px;font-weight: 500;color: #61bed9;position: relative">2</span>
+                            </span>
+                                <h3 class="kt-portlet__head-title">
+                                    Suggest Times When You're Free to Talk
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 32%">
+                                            <div
+                                                class="input-group-text" style="width: 100%">
+                                                <span>Suggested Time 1</span>
+                                            </div>
+                                        </div>
+                                        <input type="datetime-local" name="suggestedTime1" id="suggestedTime1"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 32%">
+                                            <div
+                                                class="input-group-text" style="width: 100%">
+                                                <span>Suggested Time 2</span>
+                                            </div>
+                                        </div>
+                                        <input type="datetime-local" name="suggestedTime2" id="suggestedTime2"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend" style="width: 32%">
+                                            <div
+                                                class="input-group-text" style="width: 100%">
+                                                <span>Suggested Time 3</span>
+                                            </div>
+                                        </div>
+                                        <input type="datetime-local" name="suggestedTime3" id="suggestedTime3"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet kt-portlet--mobile">
+                        <div class="kt-portlet__head kt-portlet__head--lg">
+                            <div class="kt-portlet__head-label">
+                            <span class="kt-portlet__head-icon">
+                                <span
+                                    style="display: inline-block;width: 26px;height: 25px;line-height: 24px;border: 1px solid #61bed9;border-radius: 50%;text-align: center;font-size: 15px;font-weight: 500;color: #61bed9;position: relative">3</span>
                             </span>
                                 <h3 class="kt-portlet__head-title">
                                     Payment Details
@@ -60,7 +168,8 @@
                                             @endfor
                                         </select>
                                         <select style="width: 11%" type="text" name="year" id="year"
-                                                class="form-control" value="{{$paymentTableData['expiry_year'] ?? ''}}">
+                                                class="form-control"
+                                                value="{{$paymentTableData['expiry_year'] ?? ''}}">
                                             <option selected value=''>Year</option>
                                             <option
                                                 {{$paymentTableData['expiry_year'] == "2020" ? 'selected' : ''}} value="2020">
@@ -191,6 +300,7 @@
                                             <span id="errorMonthText"></span><br>
                                             <span id="errorYearText"></span>
                                         </div>
+                                        <span class="text-muted mt-2">Your information is kept 100% private!</span>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +311,8 @@
                         <div class="kt-portlet__head kt-portlet__head--lg">
                             <div class="kt-portlet__head-label">
                             <span class="kt-portlet__head-icon">
-                                <i class="kt-font-brand fas fa-address-card"></i>
+                                <span
+                                    style="display: inline-block;width: 26px;height: 25px;line-height: 24px;border: 1px solid #61bed9;border-radius: 50%;text-align: center;font-size: 15px;font-weight: 500;color: #61bed9;position: relative">4</span>
                             </span>
                                 <h3 class="kt-portlet__head-title">
                                     Billing Address
@@ -274,7 +385,8 @@
                                         </div>
                                         <input style="width: 68%" type="text" name="postalCode" id="postalCode"
                                                class="form-control"
-                                               placeholder="10001" value="{{$paymentTableData['postal_code'] ?? ''}}">
+                                               placeholder="10001"
+                                               value="{{$paymentTableData['postal_code'] ?? ''}}">
                                         <span id="errorPostalCodeText"></span>
                                     </div>
                                 </div>
@@ -304,11 +416,15 @@
                         <div class="kt-portlet__foot">
                             <div class="kt-form__actions">
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        |
-                                        <a href="{{env('APP_URL')}}/technicians" class="btn btn-warning">Go Back</a>
+                                    <div class="col-lg-2">
+                                        <button type="button" class="btn"
+                                                style="border: 1px solid #239d4a;background-color: #41ca6d;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
+                                            Book Now >
+                                        </button>
                                     </div>
+                                </div>
+                                <div
+                                    class="text-muted mt-3">By scheduling a call you agree with our Terms of Service.
                                 </div>
                             </div>
                         </div>
