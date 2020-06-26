@@ -54,54 +54,10 @@
                                                 class="form-control"
                                                 value="{{$paymentTableData['expiry_month'] ?? ''}}">
                                             <option selected value=''>Month</option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "1" ? 'selected' : ''}} value='1'>
-                                                1
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "2" ? 'selected' : ''}} value='2'>
-                                                2
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "3" ? 'selected' : ''}} value='3'>
-                                                3
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "4" ? 'selected' : ''}} value='4'>
-                                                4
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "5" ? 'selected' : ''}} value='5'>
-                                                5
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "6" ? 'selected' : ''}} value='6'>
-                                                6
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "7" ? 'selected' : ''}} value='7'>
-                                                7
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "8" ? 'selected' : ''}} value='8'>
-                                                8
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "9" ? 'selected' : ''}} value='9'>
-                                                9
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "10" ? 'selected' : ''}} value='10'>
-                                                10
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "11" ? 'selected' : ''}} value='11'>
-                                                11
-                                            </option>
-                                            <option
-                                                {{$paymentTableData['expiry_month'] == "12" ? 'selected' : ''}} value='12'>
-                                                12
-                                            </option>
+                                            @for($i=0;$i<count($paymentTableData['monthArray']);$i++)
+                                                <option
+                                                    {{$paymentTableData['expiry_month'] == $paymentTableData['monthArray'][$i] ? 'selected' : ''}} value='{{$paymentTableData['monthArray'][$i]}}'>{{$paymentTableData['monthArray'][$i]}}</option>
+                                            @endfor
                                         </select>
                                         <select style="width: 11%" type="text" name="year" id="year"
                                                 class="form-control" value="{{$paymentTableData['expiry_year'] ?? ''}}">
