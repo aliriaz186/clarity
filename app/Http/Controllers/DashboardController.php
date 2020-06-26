@@ -22,6 +22,16 @@ class DashboardController extends Controller
         return view('dashboard/dashboard')->with(["profileTable" => $profileTable]);
     }
 
+    public function viewLandingPageDashboard()
+    {
+        $expertiseReviewTable = ExpertiseReviewTable::where('status', 'approved')->get();
+        foreach ($expertiseReviewTable as $item) {
+            $item['expert'] = ExpertiseAreaTable::where('id', $item->id_expertise)->first();
+            $item['profile'] = ProfileTable::where('user_id', $item->id_user)->first();
+        }
+        return view('landing-page/dashboard')->with(["experts" => $expertiseReviewTable]);
+    }
+
     public function expertiInfo()
     {
         if (!ProfileTable::where('user_id', Session::get('userId'))->exists()) {
@@ -91,33 +101,30 @@ class DashboardController extends Controller
 
     public function expertiseListingView()
     {
-        if (ExpertiseAreaTable::where('id_user',Session::get('userId'))->exists()){
-            $status=true;
+        if (ExpertiseAreaTable::where('id_user', Session::get('userId'))->exists()) {
+            $status = true;
             $expertListing = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first();
             $user = User::where('id', Session::get('userId'))->first();
             $basicInfo['userId'] = $user->id;
-            if (ExpertiseReviewTable::where('id_user',Session::get('userId'))->exists()){
-                $clarityUsing=false;
-                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+            if (ExpertiseReviewTable::where('id_user', Session::get('userId'))->exists()) {
+                $clarityUsing = false;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing, 'status' => $status, 'clarityUsing' => $clarityUsing]);
+            } else {
+                $clarityUsing = true;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing, 'status' => $status, 'clarityUsing' => $clarityUsing]);
             }
-            else{
-                $clarityUsing=true;
-                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
-            }
-        }
-        else{
-            $status=false;
+        } else {
+            $status = false;
             $profileTable = ProfileTable::where('user_id', Session::get('userId'))->first();
             $expertListing = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first();
             $user = User::where('id', Session::get('userId'))->first();
             $basicInfo['userId'] = $user->id;
-            if (ExpertiseReviewTable::where('id_user',Session::get('userId'))->exists()){
-                $clarityUsing=false;
-                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
-            }
-            else{
-                $clarityUsing=true;
-                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing,'profileTable'=>$profileTable]);
+            if (ExpertiseReviewTable::where('id_user', Session::get('userId'))->exists()) {
+                $clarityUsing = false;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing, 'status' => $status, 'clarityUsing' => $clarityUsing]);
+            } else {
+                $clarityUsing = true;
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing, 'status' => $status, 'clarityUsing' => $clarityUsing, 'profileTable' => $profileTable]);
             }
         }
     }
@@ -132,17 +139,17 @@ class DashboardController extends Controller
 
     public function clarityUsing(int $id)
     {
-        $expertiseReview=new ExpertiseReviewTable();
-        $expertiseReview->id_expertise=$id;
-        $expertiseReview->id_user=Session::get('userId');
-        $expertiseReview->status='pending';
+        $expertiseReview = new ExpertiseReviewTable();
+        $expertiseReview->id_expertise = $id;
+        $expertiseReview->id_user = Session::get('userId');
+        $expertiseReview->status = 'pending';
         $expertiseReview->save();
         return redirect()->back()->withErrors("Your Request has been recieved our team will contact you in 24 hours");
     }
 
     public function showCallRequests()
     {
-        $callRequests=CallRequestTable::where('id_journalist',Session::get('userId'))->get();
-        return view('dashboard/call-requests')->with(['callRequests'=>$callRequests]);
+        $callRequests = CallRequestTable::where('id_journalist', Session::get('userId'))->get();
+        return view('dashboard/call-requests')->with(['callRequests' => $callRequests]);
     }
 }

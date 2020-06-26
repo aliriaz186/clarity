@@ -50,7 +50,8 @@
                             </div>
                             <div class="col-lg-2 mt-3 text-right">
                                 <label class="">Or</label></div>
-                            <label class="text-muted mt-1 ml-5 px-1">Click on Photo Icon to Upload Photo</label>
+                            <div class="col-lg-4 text-center">
+                                <label class="text-muted px-1 mr-4">Click on Photo Icon to Upload Photo</label></div>
                         </div>
 
                     </div>
