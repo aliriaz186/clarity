@@ -23,7 +23,7 @@ Route::get('/clear-cache', function() {
 Route::get('/login', 'AuthController@loginForm');
 Route::post('/admin/login', 'AuthController@login');
 Route::post('/signout', 'AuthController@signout');
-Route::get('dashboard', 'DashboardController@index')->middleware('checkAuth');
+Route::get('profile-dashboard', 'DashboardController@index')->middleware('checkAuth');
 
 //Talha's routes
 Route::get('/profile', 'ProfileController@viewProfilePage');
