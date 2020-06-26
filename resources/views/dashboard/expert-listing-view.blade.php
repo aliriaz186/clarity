@@ -12,7 +12,7 @@
                 <input type="hidden" name="userId" id="userId"
                        class="form-control" value="{{$basicInfo['userId'] ?? ''}}">
                 <div class="col-xl-12 order-lg-12 order-xl-12">
-
+                    @if($status==true)
                     <div class="kt-portlet kt-portlet--mobile">
                         <div class="kt-portlet__head kt-portlet__head--lg">
                             <div class="kt-portlet__head-label">
@@ -22,7 +22,26 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                        @if($status==false)
+                            <div class="kt-portlet kt-portlet--mobile">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 2%!important;"><img
+                                                    src="{{asset('/profile-pictures')}}/{{$profileTable->profile_photo}}"
+                                                    style="width: 100px; height: 100px;border-radius: 50%"></td>
+                                        <td style="text-align: left!important;width: 90%!important;">
+                                            <h3>Add your areas of expertise</h3>
+                                            <p>Add expertise listings to your profile to make it easier for others to find
+                                                you.</p>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     <div class="kt-portlet__body">
+                        @if($status==true)
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
@@ -32,15 +51,16 @@
                             </tr>
                             </tbody>
                         </table>
+                            @endif
                     </div>
                     <div class="kt-portlet__body">
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
                                 @if($status==false)
-                                <td style="width: 61%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise/listing">New Area of Expertise</a></td>
+                                <td style="width: 61%!important;" class="text-center"><h2>No expertise listings</h2><p>Create a listing to be found in search</p><a type="button" class="btn btn-primary" style="width: 300px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise/listing">New Area of Expertise</a></td>
                             @endif
-                            @if($clarityUsing==true)
+                            @if($clarityUsing==true && $status==true)
                                 <td style="width: 20%!important;"><a type="button" class="btn btn-warning" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/clarity-using/{{$expertListing->id ?? ''}}">Start using Clarity</a>
                                 </td>
                                 @endif

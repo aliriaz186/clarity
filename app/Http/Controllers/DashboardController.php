@@ -107,6 +107,7 @@ class DashboardController extends Controller
         }
         else{
             $status=false;
+            $profileTable = ProfileTable::where('user_id', Session::get('userId'))->first();
             $expertListing = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first();
             $user = User::where('id', Session::get('userId'))->first();
             $basicInfo['userId'] = $user->id;
@@ -116,7 +117,7 @@ class DashboardController extends Controller
             }
             else{
                 $clarityUsing=true;
-                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing]);
+                return view('dashboard/expert-listing-view')->with(['basicInfo' => $basicInfo, 'expertListing' => $expertListing,'status'=>$status,'clarityUsing'=>$clarityUsing,'profileTable'=>$profileTable]);
             }
         }
     }
