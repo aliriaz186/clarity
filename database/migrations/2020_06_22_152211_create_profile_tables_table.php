@@ -25,6 +25,7 @@ class CreateProfileTablesTable extends Migration
             $table->text('your_location')->nullable();
             $table->text('your_timezone')->nullable();
             $table->text('profile_photo')->nullable();
+            $table->text('hourly_rate')->nullable();
             $table->timestamps();
         });
     }
