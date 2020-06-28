@@ -9,6 +9,19 @@
         <form action="#" method="POST" id="listing_form" class="form-horizontal listing_form">
             {{ csrf_field() }}
 
+            <input type="hidden" name="journalistId" id="journalistId"
+                   class="form-control"
+                   value="{{$paymentTableData['journalistId'] ?? ''}}">
+            <input type="hidden" name="hourly15MinutesCost" id="hourly15MinutesCost"
+                   class="form-control"
+                   value="{{$paymentTableData['hourly15MinutesCost'] ?? ''}}">
+            <input type="hidden" name="hourly30MinutesCost" id="hourly30MinutesCost"
+                   class="form-control"
+                   value="{{$paymentTableData['hourly30MinutesCost'] ?? ''}}">
+            <input type="hidden" name="hourly1HourCost" id="hourly1HourCost"
+                   class="form-control"
+                   value="{{$paymentTableData['hourly1HourCost'] ?? ''}}">
+
             <div class="row">
                 <div class="col-xl-12 order-lg-12 order-xl-12">
 
@@ -29,7 +42,7 @@
                         </div>
                         <div class="kt-portlet__body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%">
                                             <div
@@ -37,25 +50,50 @@
                                                 <span>Message to Person</span>
                                             </div>
                                         </div>
-                                        <textarea name="message" id="message"
+                                        <textarea style="width: 68%" name="message" id="message"
                                                   class="form-control" placeholder="Please enter a reason for the call"
-                                                  rows="5"></textarea>
+                                                  rows="4"></textarea><br>
+                                        <div>
+                                            <span id="errorMessageText"></span></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="ml-4"
+                                         style="width: 10%!important"><img
+                                            src="{{asset('/img/cover')}}/{{$paymentTableData['expert']->cover_image}}"
+                                            style="width: 83px; height: 93px;object-fit: contain!important;border-radius: 50px">
+                                    </div>
+                                    <div style="padding-left: 4%" class="text-muted mt-1">
+                                        ${{$paymentTableData['hourlyRate'] ?? ''}}/hour
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Set Estimated Length</span>
                                         </div>
                                         <select name="estimatedLength" id="estimatedLength"
                                                 class="form-control">
-                                            <option>15 minutes</option>
-                                            <option>30 minutes</option>
-                                            <option>1 hour</option>
+                                            <option value="15 minutes">15 minutes
+                                                (${{$paymentTableData['hourly15MinutesCost'] ?? ''}})
+                                            </option>
+                                            <option value="30 minutes">30 minutes
+                                                (${{$paymentTableData['hourly30MinutesCost'] ?? ''}})
+                                            </option>
+                                            <option value="1 hour">1 hour
+                                                (${{$paymentTableData['hourly1HourCost'] ?? ''}})
+                                            </option>
                                         </select></div>
-                                    <div class="text-muted mt-2">You will be charged $25.00 for the current scheduled call length. If the call goes over the scheduled time, you will be charged the balance at a rate of $1.67/min. If the call goes less than the scheduled time, you will be refunded the balance.</div>
+                                    <div class="text-muted mt-2">You will be charged selected above for the current
+                                        scheduled
+                                        call length. If the call goes over the scheduled time, you will be charged the
+                                        balance at a rate of ${{$paymentTableData['hourlyRate'] ?? ''}}/hour. If the
+                                        call
+                                        goes less than the scheduled time,
+                                        you will be refunded the balance.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +113,7 @@
                         </div>
                         <div class="kt-portlet__body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%">
                                             <div
@@ -83,13 +121,15 @@
                                                 <span>Suggested Time 1</span>
                                             </div>
                                         </div>
-                                        <input type="datetime-local" name="suggestedTime1" id="suggestedTime1"
+                                        <input style="width: 68%" type="datetime-local" name="suggestedTime1"
+                                               id="suggestedTime1"
                                                class="form-control">
+                                        <span id="errorSuggestedTime1Text"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%">
                                             <div
@@ -97,13 +137,15 @@
                                                 <span>Suggested Time 2</span>
                                             </div>
                                         </div>
-                                        <input type="datetime-local" name="suggestedTime2" id="suggestedTime2"
+                                        <input style="width: 68%" type="datetime-local" name="suggestedTime2"
+                                               id="suggestedTime2"
                                                class="form-control">
+                                        <span id="errorSuggestedTime2Text"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%">
                                             <div
@@ -111,8 +153,10 @@
                                                 <span>Suggested Time 3</span>
                                             </div>
                                         </div>
-                                        <input type="datetime-local" name="suggestedTime3" id="suggestedTime3"
+                                        <input style="width: 68%" type="datetime-local" name="suggestedTime3"
+                                               id="suggestedTime3"
                                                class="form-control">
+                                        <span id="errorSuggestedTime3Text"></span>
                                     </div>
                                 </div>
                             </div>
@@ -133,16 +177,16 @@
                         </div>
                         <div class="kt-portlet__body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Credit Card</span>
                                         </div>
-                                        <input type="text" name="cardNumber" id="cardNumber" style="width: 33%"
+                                        <input type="text" name="cardNumber" id="cardNumber" style="width: 46%"
                                                class="form-control"
                                                placeholder="Card number"
                                                value="{{$paymentTableData['card_number'] ?? ''}}">
-                                        <input type="text" name="cvv" id="cvv" style="width: 8%"
+                                        <input type="text" name="cvv" id="cvv" style="width: 21%"
                                                class="form-control"
                                                placeholder="CVV" value="{{$paymentTableData['cvv'] ?? ''}}">
                                         <div class="errorTxt">
@@ -153,7 +197,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Expiration</span>
@@ -171,6 +215,46 @@
                                                 class="form-control"
                                                 value="{{$paymentTableData['expiry_year'] ?? ''}}">
                                             <option selected value=''>Year</option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2030" ? 'selected' : ''}} value="2030">
+                                                2030
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2029" ? 'selected' : ''}} value="2029">
+                                                2029
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2028" ? 'selected' : ''}} value="2028">
+                                                2028
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2027" ? 'selected' : ''}} value="2027">
+                                                2027
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2026" ? 'selected' : ''}} value="2026">
+                                                2026
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2025" ? 'selected' : ''}} value="2025">
+                                                2025
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2024" ? 'selected' : ''}} value="2024">
+                                                2024
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2023" ? 'selected' : ''}} value="2023">
+                                                2023
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2022" ? 'selected' : ''}} value="2022">
+                                                2022
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2021" ? 'selected' : ''}} value="2021">
+                                                2021
+                                            </option>
                                             <option
                                                 {{$paymentTableData['expiry_year'] == "2020" ? 'selected' : ''}} value="2020">
                                                 2020
@@ -321,7 +405,7 @@
                         </div>
                         <div class="kt-portlet__body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Address Line 1<span
@@ -336,7 +420,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Address Line 2</span>
@@ -349,7 +433,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">City<span
@@ -363,7 +447,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">State / Province<span
@@ -377,7 +461,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Postal Code / ZIP<span
@@ -392,7 +476,7 @@
                                 </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="input-group">
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Country<span
@@ -417,7 +501,7 @@
                             <div class="kt-form__actions">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <button type="button" class="btn"
+                                        <button class="btn" type="submit"
                                                 style="border: 1px solid #239d4a;background-color: #41ca6d;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
                                             Book Now >
                                         </button>
@@ -438,6 +522,18 @@
     <!-- end:: Content -->
     <script>
 
+        let now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('suggestedTime1').value = now.toISOString().slice(0, 16);
+        let now2 = new Date();
+        now22 = now2.getMinutes() + 30;
+        now2.setMinutes(now22 - now2.getTimezoneOffset());
+        document.getElementById('suggestedTime2').value = now2.toISOString().slice(0, 16);
+        let now3 = new Date();
+        now33 = now3.getMinutes() + 60;
+        now3.setMinutes(now33 - now3.getTimezoneOffset());
+        document.getElementById('suggestedTime3').value = now3.toISOString().slice(0, 16);
+
         $(document).ready(function () {
             KTApp.blockPage({
                 baseZ: 2000,
@@ -457,7 +553,10 @@
                 $(".listing_form").validate({
                     // Specify validation rules
                     rules: {
-                        cardNumber: {required: true, pattern: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/},
+                        cardNumber: {
+                            required: true,
+                            pattern: /^3(?:[47]\d([ -]?)\d{4}(?:\1\d{4}){2}|0[0-5]\d{11}|[68]\d{12})$|^4(?:\d\d\d)?([ -]?)\d{4}(?:\2\d{4}){2}$|^6011([ -]?)\d{4}(?:\3\d{4}){2}$|^5[1-5]\d\d([ -]?)\d{4}(?:\4\d{4}){2}$|^2014\d{11}$|^2149\d{11}$|^2131\d{11}$|^1800\d{11}$|^3\d{15}$/
+                        },
                         cvv: {required: true, pattern: /^[0-9]{3,4}$/},
                         addressLine1: {required: true},
                         city: {required: true},
@@ -466,6 +565,10 @@
                         country: {required: true},
                         month: {required: true},
                         year: {required: true},
+                        message: {required: true},
+                        suggestedTime1: {required: true},
+                        suggestedTime2: {required: true},
+                        suggestedTime3: {required: true},
                     },
                     // Specify validation error messages
                     messages: {
@@ -484,6 +587,10 @@
                         country: "Country is required",
                         month: "Month is required",
                         year: "Year is required",
+                        message: "Message is required",
+                        suggestedTime1: "Suggest Time 1 is required",
+                        suggestedTime2: "Suggest Time 2 is required",
+                        suggestedTime3: "Suggest Time 3 is required",
                     },
                     errorPlacement: function (error, element) {
                         if (element.attr("name") === "cardNumber") {
@@ -504,6 +611,14 @@
                             $("#errorMonthText").text($(error).text());
                         } else if (element.attr("name") === "year") {
                             $("#errorYearText").text($(error).text());
+                        } else if (element.attr("name") === "message") {
+                            $("#errorMessageText").text($(error).text());
+                        } else if (element.attr("name") === "suggestedTime1") {
+                            $("#errorSuggestedTime1Text").text($(error).text());
+                        } else if (element.attr("name") === "suggestedTime2") {
+                            $("#errorSuggestedTime2Text").text($(error).text());
+                        } else if (element.attr("name") === "suggestedTime3") {
+                            $("#errorSuggestedTime3Text").text($(error).text());
                         } else {
                             error.append($('.errorTxt span'));
                         }
@@ -536,7 +651,7 @@
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         $.ajax({
-                            url: "{{env('APP_URL')}}/payment-info/save",
+                            url: "{{env('APP_URL')}}/request/call",
                             type: 'POST',
                             dataType: "JSON",
                             data: data,
