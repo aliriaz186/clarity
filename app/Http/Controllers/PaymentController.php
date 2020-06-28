@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PaymentTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
@@ -28,6 +29,18 @@ class PaymentController extends Controller
     public function savePaymentInfo(Request $request)
     {
         try {
+            $stripe = \Cartalyst\Stripe\Laravel\Facades\Stripe::setApiKey(env('STRIPE_SECRET'));
+            $token = $stripe->tokens()->create([
+                'card' => [
+                    'number' => $request->cardNumber,
+                    'exp_month' => $request->month,
+                    'exp_year' => $request->year,
+                    'cvc' => $request->cvv,
+                ],
+            ]);
+            if (!isset($token['id'])) {
+                return json_encode(['status' => false, 'message' => 'Token Id doenot exists!']);
+            }
             if (!PaymentTable::where('user_id', Session::get('userId'))->exists()) {
                 $paymentTable = new PaymentTable();
                 $paymentTable->user_id = Session::get('userId');

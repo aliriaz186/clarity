@@ -103,3 +103,19 @@
 #errorYearText{
     color: red!important;
 }
+
+#errorMessageText{
+    color: red!important;
+}
+
+#errorSuggestedTime1Text{
+    color: red!important;
+}
+
+#errorSuggestedTime2Text{
+    color: red!important;
+}
+
+#errorSuggestedTime3Text{
+    color: red!important;
+}

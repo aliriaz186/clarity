@@ -37,7 +37,8 @@ Route::post('outlet/save', 'ProfileController@saveOutletInfo');
 Route::post('outlet/delete', 'ProfileController@deleteOutlet');
 Route::get('/payment', 'PaymentController@viewPaymentPage');
 Route::post('payment-info/save', 'PaymentController@savePaymentInfo');
-Route::get('request-a-call', 'RequestCallController@viewRequestACallPage');
+Route::get('request-a-call/{journalistId}', 'RequestCallController@viewRequestACallPage');
+Route::post('request/call', 'RequestCallController@requestACall');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');
