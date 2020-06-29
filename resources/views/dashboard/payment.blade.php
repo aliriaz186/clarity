@@ -30,11 +30,11 @@
                                         <div class="input-group-prepend" style="width: 32%"><span
                                                 class="input-group-text" style="width: 100%">Credit Card</span>
                                         </div>
-                                        <input type="text" name="cardNumber" id="cardNumber" style="width: 33%"
+                                        <input type="text" name="cardNumber" id="cardNumber" style="width: 46%"
                                                class="form-control"
                                                placeholder="Card number"
                                                value="{{$paymentTableData['card_number'] ?? ''}}">
-                                        <input type="text" name="cvv" id="cvv" style="width: 8%"
+                                        <input type="text" name="cvv" id="cvv" style="width: 21%"
                                                class="form-control"
                                                placeholder="CVV" value="{{$paymentTableData['cvv'] ?? ''}}">
                                         <div class="errorTxt">
@@ -62,6 +62,46 @@
                                         <select style="width: 11%" type="text" name="year" id="year"
                                                 class="form-control" value="{{$paymentTableData['expiry_year'] ?? ''}}">
                                             <option selected value=''>Year</option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2030" ? 'selected' : ''}} value="2030">
+                                                2030
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2029" ? 'selected' : ''}} value="2029">
+                                                2029
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2028" ? 'selected' : ''}} value="2028">
+                                                2028
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2027" ? 'selected' : ''}} value="2027">
+                                                2027
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2026" ? 'selected' : ''}} value="2026">
+                                                2026
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2025" ? 'selected' : ''}} value="2025">
+                                                2025
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2024" ? 'selected' : ''}} value="2024">
+                                                2024
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2023" ? 'selected' : ''}} value="2023">
+                                                2023
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2022" ? 'selected' : ''}} value="2022">
+                                                2022
+                                            </option>
+                                            <option
+                                                {{$paymentTableData['expiry_year'] == "2021" ? 'selected' : ''}} value="2021">
+                                                2021
+                                            </option>
                                             <option
                                                 {{$paymentTableData['expiry_year'] == "2020" ? 'selected' : ''}} value="2020">
                                                 2020
@@ -341,7 +381,10 @@
                 $(".listing_form").validate({
                     // Specify validation rules
                     rules: {
-                        cardNumber: {required: true, pattern: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/},
+                        cardNumber: {
+                            required: true,
+                            pattern: /^3(?:[47]\d([ -]?)\d{4}(?:\1\d{4}){2}|0[0-5]\d{11}|[68]\d{12})$|^4(?:\d\d\d)?([ -]?)\d{4}(?:\2\d{4}){2}$|^6011([ -]?)\d{4}(?:\3\d{4}){2}$|^5[1-5]\d\d([ -]?)\d{4}(?:\4\d{4}){2}$|^2014\d{11}$|^2149\d{11}$|^2131\d{11}$|^1800\d{11}$|^3\d{15}$/
+                        },
                         cvv: {required: true, pattern: /^[0-9]{3,4}$/},
                         addressLine1: {required: true},
                         city: {required: true},
