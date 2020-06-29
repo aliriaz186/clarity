@@ -33,26 +33,28 @@
                             @foreach($callRequests as $key=>$call)
                                 <tr>
                                     <th scope="row">{{$key+1}}</th>
-                                    <td>{{$call->caller_name}}</td>
-                                    <td>{{$call->message}}</td>
-                                    <td>{{$call->call_total_time}}</td>
-                                    <td>{{$call->call_total_Costs}}</td>
-                                    <td>{{$call->suggested_time_one}}</td>
-                                    <td>{{$call->suggested_time_two}}</td>
-                                    <td>{{$call->suggested_time_three}}</td>
+                                    <td>{{$call->caller_name ?? ''}}</td>
+                                    <td>{{$call->message ?? ''}}</td>
+                                    <td>{{$call->call_total_time ?? ''}}</td>
+                                    <td>{{$call->call_total_Costs ?? ''}}</td>
+                                    <td>{{$call->suggested_time_one ?? ''}}</td>
+                                    <td>{{$call->suggested_time_two ?? ''}}</td>
+                                    <td>{{$call->suggested_time_three ?? ''}}</td>
                                     <td>{{$call->status}}</td>
                                     <td>{{$call->approval_status}}</td>
-                                    <td style="width: 15%!important;">@if($call->approval_status=='pending')<a type="button" class="btn btn-primary btn-sm"
-                                                                         onclick="acceptRequest('{{$call->id}}','{{$call->suggested_time_one}}','{{$call->suggested_time_two}}','{{$call->suggested_time_three}}')"
+                                    <td style="width: 15%!important;">@if($call->approval_status=='pending' ?? '')<a type="button" class="btn btn-primary btn-sm"
+                                                                         onclick="acceptRequest('{{$call->id}}','{{$call->suggested_time_one ?? ''}}','{{$call->suggested_time_two ?? ''}}','{{$call->suggested_time_three ?? ''}}')"
                                                                          data-toggle="modal" data-target="#myModal"
                                                                          style="color: white">Accept</a><a type="button"
                                                                                                            class="btn btn-warning ml-3 btn-sm"
-                                                                                                           style="color: white"
-                                                                                                           href="{{ url ('') }}/expertise/listing">Reject</a>
+                                                                                                           style="color: white" onclick="rejectRequest('{{$call->id ?? ''}}')">Reject</a>
                                                                           @endif
                                         @if($call->approval_status=='approved')
-                                            <p>Scheduled at {{$call->scheduled_date_time}}</p>
+                                            <p>Scheduled at {{$call->scheduled_date_time ?? ''}}</p>
                                             @endif
+                                        @if($call->approval_status=='Rejected' ?? '')
+                                            <p>Request Rejected</p>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -188,6 +190,44 @@
                         }
                     },
                 });
+            }
+            function rejectRequest(callId) {
+                let confirmation=confirm("Are you sure you want to reject the request")
+                if (confirmation){
+                 let callid=callId;
+                    $.ajax({
+                        url: `{{env('APP_URL')}}/api/reject/call/request`,
+                        type: 'POST',
+                        dataType: "JSON",
+                        data: {
+                            callId: callId,
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        beforeSend: function () {
+                            $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+                        },
+                        success: function (result) {
+                            // document.getElementById('user_password').value = '';
+                            if (result) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": "Call Request Reject Successfully",
+                                    "type": "success",
+                                    "showConfirmButton": false,
+                                    "timer": 2000,
+                                    "onClose": function (e) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                setTimeout(function () {
+                                    alert("server error")
+                                }, 3000);
+                            }
+                        },
+                    });
+                }
+
             }
         </script>
 @endsection
