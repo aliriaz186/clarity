@@ -96,7 +96,8 @@
                             <i class="kt-menu__section-icon flaticon-more-v2"></i>
                         </li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'profile-dashboard') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-dashboard" class="kt-menu__link "><span
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-dashboard"
+                                                    class="kt-menu__link "><span
                                     class="kt-menu__link-icon"><i class="fas fa-user-circle"></i></span><span
                                     class="kt-menu__link-text">Profile</span></a></li>
                         <li class="kt-menu__item kt-menu__item--submenu {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'outlet') ? 'kt-menu__item--open' : '' }}"
@@ -113,7 +114,8 @@
                                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                 class="kt-menu__link-text">Basic Information</span></a></li>
                                     <li class="kt-menu__item {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--active' : '' }}"
-                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-photo" class="kt-menu__link "><i
+                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-photo"
+                                                                class="kt-menu__link "><i
                                                 class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                 class="kt-menu__link-text">Profile Photo</span></a></li>
                                     <li class="kt-menu__item {{ (Request::segment(1) == 'outlet') ? 'kt-menu__item--active' : '' }}"
@@ -124,19 +126,20 @@
                             </div>
                         </li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'expert-info-page') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page" class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-user-graduate"></i></span><span
-                                        class="kt-menu__link-text">Apply to be an expert</span></a></li>
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page"
+                                                    class="kt-menu__link "><span
+                                    class="kt-menu__link-icon"><i class="fas fa-user-graduate"></i></span><span
+                                    class="kt-menu__link-text">Apply to be an expert</span></a></li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'calls') ? 'kt-menu__item--active' : '' }}"
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/calls"
                                                     class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
-                                        class="kt-menu__link-text">Calls</span></a></li>
+                                    class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
+                                    class="kt-menu__link-text">Calls</span></a></li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'call-request') ? 'kt-menu__item--active' : '' }}"
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/call-request"
                                                     class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
-                                        class="kt-menu__link-text">Calls Requests</span></a></li>
+                                    class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
+                                    class="kt-menu__link-text">Calls Requests</span></a></li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'payment') ? 'kt-menu__item--active' : '' }}"
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/payment" class="kt-menu__link "><span
                                     class="kt-menu__link-icon"><i class="fab fa-cc-mastercard"></i></span><span
@@ -150,14 +153,15 @@
 
         <!-- end:: Aside -->
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
             <!-- begin:: Header -->
             <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
 
                 <!-- begin:: Header Menu -->
 
                 <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-
+                    <div class="mt-4">
+                        <a class="dashboard-button ml-5" href="{{env('APP_URL')}}/dashboard">Dashboard</a>
+                    </div>
                 </div>
                 <!-- end:: Header Menu -->
 
@@ -168,15 +172,16 @@
                             <div class="kt-header__topbar-user">
                                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
                                 <span class="kt-header__topbar-username kt-hidden-mobile">Admin</span>
-{{--                                <span--}}
-{{--                                    class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">A</span>--}}
+                                {{--                                <span--}}
+                                {{--                                    class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">A</span>--}}
                             </div>
                         </div>
                         <div
                             class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
                             <div class="kt-notification">
                                 <div class="kt-notification__custom kt-space-between">
-                                    <a class="btn btn-label btn-label-brand btn-sm btn-bold" onclick="signout()">Sign Out</a>
+                                    <a class="btn btn-label btn-label-brand btn-sm btn-bold" onclick="signout()">Sign
+                                        Out</a>
                                     <a href="#"
                                        class="btn btn-clean btn-sm btn-bold">Profile</a>
                                 </div>
@@ -190,20 +195,20 @@
 
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-<script>
-    function signout() {
-        $.ajax({
-            url: `{{env('APP_URL')}}/signout`,
-            type: 'POST',
-            dataType: "JSON",
-            data: {"_token": "{{ csrf_token() }}"},
-            beforeSend: function () {
-                $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-            },
-            success: function (result) {
-                window.location.href = `{{env('APP_URL')}}/login`
+                <script>
+                    function signout() {
+                        $.ajax({
+                            url: `{{env('APP_URL')}}/signout`,
+                            type: 'POST',
+                            dataType: "JSON",
+                            data: {"_token": "{{ csrf_token() }}"},
+                            beforeSend: function () {
+                                $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+                            },
+                            success: function (result) {
+                                window.location.href = `{{env('APP_URL')}}/login`
 
-            },
-        });
-    }
-</script>
+                            },
+                        });
+                    }
+                </script>
