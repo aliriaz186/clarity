@@ -23,3 +23,5 @@ Route::post('update/info', 'ProfileController@updateInfo');
 Route::post('update/next/info', 'ProfileController@updateNextInfo');
 Route::post('expertise/save', 'ProfileController@expertiseSave');
 Route::post('expertise/update', 'ProfileController@expertiseUpdate');
+Route::post('accept/call/request', 'CallRequestController@acceptRequest');
+Route::post('reject/call/request', 'CallRequestController@rejectRequest');

@@ -127,6 +127,11 @@
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page" class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><i class="fas fa-user-graduate"></i></span><span
                                         class="kt-menu__link-text">Apply to be an expert</span></a></li>
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'calls') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/calls"
+                                                    class="kt-menu__link "><span
+                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
+                                        class="kt-menu__link-text">Calls</span></a></li>
                         <li class="kt-menu__item {{ (Request::segment(1) == 'call-request') ? 'kt-menu__item--active' : '' }}"
                             aria-haspopup="true"><a href="{{env('APP_URL')}}/call-request"
                                                     class="kt-menu__link "><span

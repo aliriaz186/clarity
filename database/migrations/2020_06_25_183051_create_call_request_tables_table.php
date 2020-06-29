@@ -23,6 +23,7 @@ class CreateCallRequestTablesTable extends Migration
             $table->string('suggested_time_one');
             $table->string('suggested_time_two');
             $table->string('suggested_time_three');
+            $table->string('scheduled_date_time')->nullable();
             $table->integer('id_journalist');
             $table->string('status');
             $table->string('approval_status');
