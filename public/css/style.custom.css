@@ -121,7 +121,7 @@
 }
 
 .login-button {
-    background-color: #ddd;
+    background-color: #dddddd5c;
     border: none;
     color: black;
     padding: 10px 20px;
@@ -133,7 +133,7 @@
 }
 
 .login-button:hover {
-    background-color: #f1f1f1;
+    background-color: #ddd;
 }
 
 .dashboard-button {
