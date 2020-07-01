@@ -25,6 +25,7 @@ Route::post('/admin/login', 'AuthController@login');
 Route::post('/signout', 'AuthController@signout');
 Route::get('profile-dashboard', 'DashboardController@index')->middleware('checkAuth');
 Route::get('dashboard', 'DashboardController@viewLandingPageDashboard');
+Route::post('register', 'AuthController@register');
 
 //Talha's routes
 Route::get('/profile', 'ProfileController@viewProfilePage');
@@ -39,6 +40,7 @@ Route::get('/payment', 'PaymentController@viewPaymentPage');
 Route::post('payment-info/save', 'PaymentController@savePaymentInfo');
 Route::get('request-a-call/{journalistId}', 'RequestCallController@viewRequestACallPage');
 Route::post('request/call', 'RequestCallController@requestACall');
+Route::post('user/paid/money/save', 'PaymentController@savePaidMoneyData');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');

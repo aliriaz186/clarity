@@ -29,7 +29,7 @@
                             @foreach($callRequests as $key=>$call)
                                 <tr>
                                     <th scope="row">{{$key+1}}</th>
-                                    <td>{{$journalistName ?? ''}}</td>
+                                    <td>{{$call->journalistName ?? ''}}</td>
                                     <td><b>$</b>{{$call->call_total_Costs ?? ''}}</td>
                                     <td>{{$call->payment ?? ''}}</td>
                                     <td>
@@ -45,7 +45,7 @@
                                     <td>{{$call->status ?? ''}}</td>
                                     <td style="width: 15%!important;">
                                         @if($call->approval_status=='approved' ?? '')<a type="button" class="btn btn-primary btn-sm"
-                                                                         style="color: white" data-toggle="modal" data-target="#myModal" onclick="showNumber('{{$journalistPhoneNumber ?? ''}}')">Click for Journalist No.</a>
+                                                                         style="color: white" data-toggle="modal" data-target="#myModal" onclick="showNumber('{{$call->journalistPhoneNumber ?? ''}}')">View Journalist Phone</a>
                                             @endif
                                         @if($call->approval_status=='pending' ?? '')
                                             <p>Pending</p>

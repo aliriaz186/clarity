@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\CallRequestTable;
+use App\ExpertiseAreaTable;
 use App\PaymentTable;
+use App\UserMoneyTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Stripe\Stripe;
@@ -73,4 +76,52 @@ class PaymentController extends Controller
             return json_encode(['status' => false, 'message' => $exception->getMessage()]);
         }
     }
+
+    public function savePaidMoneyData()
+    {
+        try {
+            $cost = 0;
+            $callRequestData = array();
+            if (!empty(Session::get('userId'))) {
+                $tomorrow = date("Y-m-d", strtotime("+1 day"));
+                if (!ExpertiseAreaTable::where('id_user', Session::get('userId'))->exists()) {
+                    return json_encode("user is not expert");
+                }
+                $expertId = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first()['id'];
+                if (!CallRequestTable::where([['id_journalist', '=', $expertId], ['status', '!=', 'completed']])->exists()) {
+                    return json_encode("Call Data not found");
+                }
+                $callRequestTableData = CallRequestTable::where([['id_journalist', '=', $expertId], ['status', '!=', 'completed']])->get();
+                for ($i = 0; $i < count($callRequestTableData); $i++) {
+                    if (!empty($callRequestTableData[$i]->scheduled_date_time)) {
+                        $scheduledDate = explode(' ', $callRequestTableData[$i]->scheduled_date_time)[0];
+                        if ($tomorrow > date($scheduledDate)) {
+                            array_push($callRequestData, $callRequestTableData[$i]);
+                        }
+                    }
+                }
+                for ($i = 0; $i < count($callRequestData); $i++) {
+                    $cost = $cost + (int)$callRequestData[$i]['call_total_Costs'];
+                    $requestStatus = CallRequestTable::where('id', $callRequestData[$i]["id"])->first();
+                    $requestStatus->status = "completed";
+                    $requestStatus->approval_status = "completed";
+                    $requestStatus->update();
+                }
+                if ($cost > 0) {
+                    $userMoneyTable = new UserMoneyTable();
+                    $userMoneyTable->user_id = Session::get('userId');
+                    $userMoneyTable->money = $cost;
+                    $userMoneyTable->status = 'pending';
+                    $userMoneyTable->save();
+                }
+
+            } else {
+                return json_encode("session issue");
+            }
+        } catch (\Exception $exception) {
+            return json_encode($exception);
+        }
+
+    }
+
 }

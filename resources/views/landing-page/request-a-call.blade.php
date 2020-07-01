@@ -664,12 +664,11 @@
                                     setTimeout(function () {
                                         swal.fire({
                                             "title": "",
-                                            "text": "Saved Successfully",
+                                            "text": "Payment Done Successfully!",
                                             "type": "success",
-                                            "showConfirmButton": false,
-                                            "timer": 1500,
+                                            "showConfirmButton": true,
                                             "onClose": function (e) {
-                                                // window.location.reload();
+                                                window.location.href = `{{env('APP_URL')}}/calls`
                                             }
                                         })
                                     }, 2000);

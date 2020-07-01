@@ -101,6 +101,7 @@
 
                         <!--begin::Form-->
                         <div class="kt-form" novalidate="novalidate" id="kt_login_form">
+                            <input type="hidden" value="{{$source ?? ''}}" id="sourceUrl">
                             <div class="form-group">
                                 <input class="form-control" type="text" id="user_username" placeholder="Username"
                                        name="user_username" autocomplete="off">
@@ -235,7 +236,12 @@
             success: function (result) {
                 document.getElementById('user_password').value = '';
                 if (result.status === true) {
-                    window.location.href = `{{env('APP_URL')}}/dashboard`
+                    if(document.getElementById('sourceUrl').value !== '' &&  document.getElementById('sourceUrl').value !== undefined)
+                    {
+                        window.location.href = `{{env('APP_URL')}}/${document.getElementById('sourceUrl').value}`
+                    }else{
+                        window.location.href = `{{env('APP_URL')}}/dashboard`
+                    }
                 } else {
                     document.getElementById('loginError').style.display = 'block';
                     setTimeout(function () {
