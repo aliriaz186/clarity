@@ -41,6 +41,8 @@ Route::post('payment-info/save', 'PaymentController@savePaymentInfo');
 Route::get('request-a-call/{journalistId}', 'RequestCallController@viewRequestACallPage');
 Route::post('request/call', 'RequestCallController@requestACall');
 Route::post('user/paid/money/save', 'PaymentController@savePaidMoneyData');
+Route::get('/money', 'MoneyController@viewMoneyPage');
+Route::post('user/get/paid', 'MoneyController@userGetPaid');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');

@@ -145,3 +145,20 @@
     padding: 10px;
     background: rgba(225, 225, 239, 0.47);
 }
+
+.dollar:before {
+    content: "$";
+    position: absolute;
+    color: #9c9c9c;
+    margin-left: 10px;
+    pointer-events: none;
+    top: 3px;
+}
+
+.active1 {
+    background-color: #d3d3d378
+}
+
+.active2 {
+    background-color: rgba(211, 211, 211, 0)
+}
