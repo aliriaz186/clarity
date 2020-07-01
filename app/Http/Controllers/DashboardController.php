@@ -155,12 +155,12 @@ class DashboardController extends Controller
 
     public function showCallHistory()
     {
-        $userEmail=User::where('id',Session::get('userId'))->first()['email'];
+        $userEmail = User::where('id', Session::get('userId'))->first()['email'];
         $callRequests = CallRequestTable::where('caller_email', $userEmail)->get();
-        for ($i=0;$i<count($callRequests);$i++){
-            $journalistName=User::where('id',$callRequests[$i]['id_journalist'])->first()['name'];
-            $journalistPhoneNumber=ProfileTable::where('user_id',$callRequests[$i]['id_journalist'])->first()['cell_phone'];
+        for ($i = 0; $i < count($callRequests); $i++) {
+            $callRequests[$i]['journalistName'] = User::where('id', $callRequests[$i]['id_journalist'])->first()['name'];
+            $callRequests[$i]['journalistPhoneNumber'] = ProfileTable::where('user_id', $callRequests[$i]['id_journalist'])->first()['cell_phone'];
         }
-        return view('dashboard/user-calls-history')->with(['callRequests' => $callRequests,'journalistName'=>$journalistName,'journalistPhoneNumber'=>$journalistPhoneNumber]);
+        return view('dashboard/user-calls-history')->with(['callRequests' => $callRequests]);
     }
 }

@@ -205,7 +205,7 @@
             return false;
         }
         $.ajax({
-            url: `{{env('APP_URL')}}/api/register`,
+            url: `{{env('APP_URL')}}/register`,
             type: 'POST',
             dataType: "JSON",
             data: {userName: userName,email:email, password: password, "_token": "{{ csrf_token() }}"},

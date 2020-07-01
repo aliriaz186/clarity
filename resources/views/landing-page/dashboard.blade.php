@@ -9,8 +9,6 @@
         <!--Begin::Row-->
         <div class="form-horizontal listing_form">
             <div class="row">
-                {{--<input type="hidden" name="userId" id="userId"--}}
-                {{--class="form-control" value="{{$basicInfo['userId'] ?? ''}}">--}}
                 <div class="col-xl-12 order-lg-12 order-xl-12 text-center">
                     <div class="kt-portlet__body">
                         <table class="table table-borderless">
@@ -58,4 +56,20 @@
             </div>
         </div>
     </div>
+    <script>
+        $.ajax({
+            url: `{{env('APP_URL')}}/user/paid/money/save`,
+            type: 'POST',
+            dataType: "JSON",
+            data: {"_token": "{{ csrf_token() }}"},
+            success: function (result) {
+                if (result) {
+                } else {
+                    setTimeout(function () {
+                    }, 3000);
+                }
+            },
+        });
+    </script>
 @endsection
+

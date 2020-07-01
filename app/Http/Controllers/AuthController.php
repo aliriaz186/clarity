@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     //Displaying Auth Page
-    public function loginForm()
+    public function loginForm(Request $request)
     {
         if (Session::has('userId')) {
             return redirect('dashboard');
         } else {
-            return view('auth/login');
+            return view('auth/login')->with(['source' => $request->source]);
         }
     }
 
@@ -52,7 +52,10 @@ class AuthController extends Controller
         $user->name=$request->userName;
         $user->email=$request->email;
         $user->password=md5($request->password);
-        return json_encode($user->save());
+        $result = $user->save();
+        Session::put('userId', $user->id);
+        Session::put('isAdmin', true);
+        return json_encode($result);
     }
 
 }

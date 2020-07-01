@@ -154,7 +154,6 @@
                 success: function (result) {
                     // document.getElementById('user_password').value = '';
                     if (result) {
-                        alert("expertise saved successfully");
                         {{--window.location.href = `{{env('APP_URL')}}/expertise/listing`--}}
                     } else {
                         setTimeout(function () {
