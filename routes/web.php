@@ -43,6 +43,8 @@ Route::post('request/call', 'RequestCallController@requestACall');
 Route::post('user/paid/money/save', 'PaymentController@savePaidMoneyData');
 Route::get('/money', 'MoneyController@viewMoneyPage');
 Route::post('user/get/paid', 'MoneyController@userGetPaid');
+Route::get('journalist/signup', 'AuthController@showJournalistSignUpForm');
+Route::post('register/journalist', 'AuthController@registerJournalist');
 
 //Hasssan's routes
 Route::get('signup', 'AuthController@showSignUpForm');

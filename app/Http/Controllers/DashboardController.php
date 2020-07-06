@@ -142,15 +142,20 @@ class DashboardController extends Controller
         $expertiseReview = new ExpertiseReviewTable();
         $expertiseReview->id_expertise = $id;
         $expertiseReview->id_user = Session::get('userId');
-        $expertiseReview->status = 'pending';
+        $expertiseReview->status = 'approved';
         $expertiseReview->save();
         return redirect()->back()->withErrors("Your Request has been recieved our team will contact you in 24 hours");
     }
 
     public function showCallRequests()
     {
-        $callRequests = CallRequestTable::where('id_journalist', Session::get('userId'))->get();
-        return view('dashboard/call-requests')->with(['callRequests' => $callRequests]);
+        if (ExpertiseAreaTable::where('id_user', Session::get('userId'))->exists()) {
+            $id = ExpertiseAreaTable::where('id_user', Session::get('userId'))->first()['id'];
+            $callRequests = CallRequestTable::where('id_journalist', $id)->get();
+            return view('dashboard/call-requests')->with(['callRequests' => $callRequests]);
+        } else {
+            return view('dashboard/call-requests')->with(['callRequests' => []]);
+        }
     }
 
     public function showCallHistory()
@@ -158,8 +163,9 @@ class DashboardController extends Controller
         $userEmail = User::where('id', Session::get('userId'))->first()['email'];
         $callRequests = CallRequestTable::where('caller_email', $userEmail)->get();
         for ($i = 0; $i < count($callRequests); $i++) {
-            $callRequests[$i]['journalistName'] = User::where('id', $callRequests[$i]['id_journalist'])->first()['name'];
-            $callRequests[$i]['journalistPhoneNumber'] = ProfileTable::where('user_id', $callRequests[$i]['id_journalist'])->first()['cell_phone'];
+            $userId = ExpertiseAreaTable::where('id', $callRequests[$i]['id_journalist'])->first()['id_user'];
+            $callRequests[$i]['journalistName'] = User::where('id', $userId)->first()['name'];
+            $callRequests[$i]['journalistPhoneNumber'] = ProfileTable::where('user_id', $userId)->first()['cell_phone'];
         }
         return view('dashboard/user-calls-history')->with(['callRequests' => $callRequests]);
     }

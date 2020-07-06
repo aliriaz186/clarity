@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\OutletTable;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -25,18 +26,24 @@ class AuthController extends Controller
         if (User::where('email', $request->email)->exists()) {
             $dbUser = User::where('email', $request->email)->first();
             if ($dbUser->password == md5($request->password)) {
-                Session::put('userId', $dbUser->id);
-                Session::put('isAdmin', true);
-                return json_encode(['status' => true, 'message' => 'Login Successfull!']);
+                if ($dbUser->status != 0) {
+                    Session::put('userId', $dbUser->id);
+                    Session::put('isAdmin', true);
+                    return json_encode(['status' => true, 'message' => 'Login Successfull!']);
+                } else {
+                    return json_encode(['status' => false, 'message' => 'Your account is not approved yet!']);
+                }
             } else {
                 return json_encode(['status' => false, 'message' => 'Invalid username or password!']);
             }
+
         } else {
-            return json_encode(['status' => false, 'message' => 'Invalid username or password']);
+            return json_encode(['status' => false, 'message' => 'Invalid username or password!']);
         }
     }
 
-    public function signout(Request $request){
+    public function signout(Request $request)
+    {
         Session::flush();
         return json_encode(true);
     }
@@ -46,16 +53,45 @@ class AuthController extends Controller
         return view('auth/signup');
     }
 
+    public function showJournalistSignUpForm()
+    {
+        return view('auth/journalist-signup');
+    }
+
     public function register(Request $request)
     {
-        $user=new User();
-        $user->name=$request->userName;
-        $user->email=$request->email;
-        $user->password=md5($request->password);
-        $result = $user->save();
-        Session::put('userId', $user->id);
-        Session::put('isAdmin', true);
-        return json_encode($result);
+        if (!User::where('email', $request->email)->exists()) {
+            $user = new User();
+            $user->name = $request->userName;
+            $user->email = $request->email;
+            $user->status = 1;
+            $user->password = md5($request->password);
+            $user->save();
+            Session::put('userId', $user->id);
+            Session::put('isAdmin', true);
+            return json_encode(['status' => true, 'message' => 'User registered!']);
+        } else {
+            return json_encode(['status' => false, 'message' => 'Email already exists!']);
+        }
+    }
+
+    public function registerJournalist(Request $request)
+    {
+        if (!User::where('email', $request->email)->exists()) {
+            $user = new User();
+            $user->name = $request->userName;
+            $user->email = $request->email;
+            $user->status = 0;
+            $user->password = md5($request->password);
+            $user->save();
+            $outletTable = new OutletTable();
+            $outletTable->user_id = $user->id;
+            $outletTable->name = $request->outlet;
+            $outletTable->save();
+            return json_encode(['status' => true, 'message' => 'User registered!']);
+        } else {
+            return json_encode(['status' => false, 'message' => 'Email already exists!']);
+        }
     }
 
 }
