@@ -111,7 +111,7 @@
                                        name="user_password" autocomplete="off">
                             </div>
                             <div class="alert alert-warning mt-2" style="display: none; color: white!important;" id="loginError">
-                                Invalid email or password
+
                             </div>
                             <!--begin::Action-->
                             <div class="kt-login__actions">
@@ -243,10 +243,11 @@
                         window.location.href = `{{env('APP_URL')}}/dashboard`
                     }
                 } else {
+                    document.getElementById('loginError').innerHTML = result['message'];
                     document.getElementById('loginError').style.display = 'block';
                     setTimeout(function () {
                         document.getElementById('loginError').style.display = 'none';
-                    }, 3000);
+                    }, 5000);
                 }
             },
         });

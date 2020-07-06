@@ -86,8 +86,7 @@
                 <!--begin::Head-->
                 <div class="kt-login__head">
                     <span class="kt-login__signup-label" style="font-size: medium">SignUp as</span>&nbsp;&nbsp;
-                    <a href="{{URL::to('journalist/signup')}}"
-                       style="font-size:medium;text-decoration: underline;color: #0a6aa1">Journalist</a>
+                    <a href="{{URL::to('signup')}}" style="text-decoration: underline;color: #0a6aa1;font-size: medium">User</a>
                 </div>
 
                 <!--end::Head-->
@@ -106,6 +105,10 @@
                             <div class="form-group">
                                 <input class="form-control" type="text" id="user_username" placeholder="Username"
                                        name="user_username">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" id="outlet" placeholder="Outlet"
+                                       name="user_outlet">
                             </div>
                             <div class="form-group">
                                 <input class="form-control" type="email" id="email" placeholder="Email"
@@ -186,6 +189,7 @@
         let userName = document.getElementById('user_username').value;
         let email = document.getElementById('email').value;
         let password = document.getElementById('user_password').value;
+        let outlet = document.getElementById('outlet').value;
         if (userName === "" || userName === null) {
             Swal.fire({
                 icon: 'error',
@@ -210,18 +214,40 @@
             });
             return false;
         }
+        if (outlet === "" || outlet === null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Outlet cannot be empty!',
+            });
+            return false;
+        }
         $.ajax({
-            url: `{{env('APP_URL')}}/register`,
+            url: `{{env('APP_URL')}}/register/journalist`,
             type: 'POST',
             dataType: "JSON",
-            data: {userName: userName, email: email, password: password, "_token": "{{ csrf_token() }}"},
+            data: {
+                userName: userName,
+                email: email,
+                password: password,
+                outlet: outlet,
+                "_token": "{{ csrf_token() }}"
+            },
             beforeSend: function () {
                 $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             },
             success: function (result) {
                 document.getElementById('user_password').value = '';
                 if (result['status']) {
-                    window.location.href = `{{env('APP_URL')}}/dashboard`
+                    swal.fire({
+                        "title": "",
+                        "text": "Journalist SignUp request Sent!",
+                        "type": "success",
+                        "showConfirmButton": true,
+                        "onClose": function (e) {
+                            window.location.href = `{{env('APP_URL')}}/login`
+                        }
+                    })
                 } else {
                     Swal.fire({
                         icon: 'error',
