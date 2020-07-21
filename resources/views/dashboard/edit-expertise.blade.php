@@ -104,7 +104,7 @@
                             <div class="kt-form__actions">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <button type="button" class="btn btn-primary" onclick="updateInfo()">Update
+                                        <button type="button" class="btn btn-primary" onclick="updateInfo()" style="background: rgba(0, 18, 255, 1)!important;border: none!important">Update
                                             Expertise
                                         </button>
                                     </div>

@@ -18,7 +18,7 @@
                                     <td></td>
                                     <td></td>
                                     <td><h1>No Expert Found</h1></td>
-                                    <td></td>
+                                    <td><img src="{{asset('img/undraw_no_data_qbuo.svg')}}"></td>
                                     <td></td>
                                 </tr>
                             @endif
@@ -42,7 +42,7 @@
                                         <p>per hour</p>
                                         <a href="{{env('APP_URL')}}/request-a-call/{{$expert['expert']->id}}"
                                            type="button" class="btn"
-                                           style="border: 1px solid #239d4a;background-color: #41ca6d;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
+                                           style="border: none;background-color: rgba(0, 18, 255, 1);color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
                                             Request a call >
                                         </a>
                                     </td>

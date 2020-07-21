@@ -7,6 +7,7 @@
     <meta charset="utf-8"/>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://cdn.landen.co/defaults/favicon.ico">
 
     <!--begin::Fonts -->
     <link rel="stylesheet"
@@ -68,7 +69,7 @@
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;padding: 1.28rem 1rem!important;">
-    <a class="navbar-brand font-weight-bold" href="{{env('APP_URL')}}/dashboard">Clarity</a>
+    <a class="navbar-brand font-weight-bold" href="{{env('APP_URL')}}/">PRESS CHAT</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

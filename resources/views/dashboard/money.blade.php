@@ -51,13 +51,13 @@
                                         @if($money == 0)
                                             <a disabled
                                                type="button" class="btn"
-                                               style="cursor: not-allowed!important;opacity:0.6;border: 1px solid #239d4a;background-color: #41ca6d;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
+                                               style="cursor: not-allowed!important;opacity:0.6;background: rgba(0, 18, 255, 1)!important;border: none!important;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
                                                 Request Withdrawal >
                                             </a>
                                         @elseif($money > 0)
                                             <a data-toggle="modal" data-target="#myModal"
                                                type="button" class="btn"
-                                               style="border: 1px solid #239d4a;background-color: #41ca6d;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
+                                               style="background: rgba(0, 18, 255, 1)!important;border: none!important;;color: #fff;box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -3px 10px rgba(255,255,255,0.3);text-shadow: 0 1px 0 rgba(0,0,0,0.3);width: 100%">
                                                 Request Withdrawal >
                                             </a>
                                         @endif

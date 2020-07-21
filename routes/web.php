@@ -20,6 +20,7 @@ Route::get('/clear-cache', function() {
     \Illuminate\Support\Facades\Artisan::call('config:cache');
     // return what you want
 });
+Route::get('/', 'MainController@index');
 Route::get('/login', 'AuthController@loginForm');
 Route::post('/admin/login', 'AuthController@login');
 Route::post('/signout', 'AuthController@signout');

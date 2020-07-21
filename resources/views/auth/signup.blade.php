@@ -4,7 +4,8 @@
 <head>
     <base href="../../../">
     <meta charset="utf-8"/>
-    <title>Clarify</title>
+    <title>PRESS CHAT</title>
+    <link rel="icon" href="https://cdn.landen.co/defaults/favicon.ico">
     <meta name="description" content="Login page example">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -51,17 +52,20 @@
 
             <!--begin::Aside-->
             <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside"
-                 style="background-color: #1e1e2d">
+                 style="background-color: #646fff">
                 <div class="kt-grid__item">
                     <a href="#" class="kt-login__logo">
                         {{--                    <img src="{{asset('media/logos/logo-4.png')}}">--}}
                     </a>
                 </div>
-                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
-                    <div class="kt-grid__item kt-grid__item--middle">
-                        <h3 class="kt-login__title">Clarify!</h3>
-                        <h4 class="kt-login__subtitle">The ultimate Service providing platform.</h4>
+                <div class="zigzagItem zigzagItem--right">
+                    <div class="zigzagItem__content"><span class="zigzagItem__number"></span>
+                        <h3 class="zigzagItem__title color-1 weight-text-m" style="color: white!important;">Sign Up for Press Chat</h3><br>
+                        <div class="zigzagItem__text" ><h5 style="color: white!important;">Join Press Chat now — it's free!</h5></div>
                     </div>
+                    <div class="zigzagItem__graphic" style="margin-top: 41px!important"><img src="https://assets.landen.co/1/calling_kpbp.svg"
+                                                                                                       class="media media--image"
+                                                                                                       srcset="https://assets.landen.co/1/calling_kpbp.svg 2x"></div>
                 </div>
                 <div class="kt-grid__item">
                     <div class="kt-login__info">
@@ -98,7 +102,7 @@
                     <!--begin::Signin-->
                     <div class="kt-login__form">
                         <div class="kt-login__title">
-                            <h3>Sign Up</h3>
+                            <h3 style="color: black;font-weight: bold   ">Sign Up</h3>
                         </div>
 
                         <!--begin::Form-->
@@ -117,7 +121,7 @@
                             </div>
                             <div class="kt-login__actions">
                                 <button onclick="register()" id="kt_login_signin_submit"
-                                        class="btn btn-primary btn-elevate kt-login__btn-primary">Sign Up
+                                        class="btn btn-primary btn-elevate kt-login__btn-primary"  style="color:#fff;background-color:rgba(0, 18, 255, 1)!important;border: none!important;">Sign Up
                                 </button>
                             </div>
                             <div>

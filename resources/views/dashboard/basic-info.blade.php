@@ -504,9 +504,9 @@
                             <div class="kt-form__actions">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-primary" style="background: rgba(0, 18, 255, 1)!important;border: none!important;">Save</button>
                                         |
-                                        <a href="{{env('APP_URL')}}/technicians" class="btn btn-warning">Go Back</a>
+                                        <a href="{{env('APP_URL')}}/technicians" class="btn btn-outline-dark">Go Back</a>
                                     </div>
                                 </div>
                             </div>

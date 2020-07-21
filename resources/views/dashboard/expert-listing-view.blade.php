@@ -28,9 +28,15 @@
                                 <table class="table table-borderless">
                                     <tbody>
                                     <tr>
+                                        @if(empty($profileTable->profile_photo))
+                                            <td style="width: 2%!important;"><img
+                                                        src="{{asset('img/default.svg')}}"
+                                                        style="width: 100px; height: 100px;border-radius: 50%"></td>
+                                        @else
                                         <td style="width: 2%!important;"><img
                                                     src="{{asset('/profile-pictures')}}/{{$profileTable->profile_photo}}"
                                                     style="width: 100px; height: 100px;border-radius: 50%"></td>
+                                        @endif
                                         <td style="text-align: left!important;width: 90%!important;">
                                             <h3>Add your areas of expertise</h3>
                                             <p>Add expertise listings to your profile to make it easier for others to find
@@ -47,7 +53,7 @@
                             <tr>
                                 <td style="width: 10%!important;"><img src="{{asset('/img/cover/')}}/{{$expertListing->cover_image ?? ''}}" style="width: 150px; height: 100px;object-fit: contain!important;"></td>
                                 <td style="text-align: left!important;width: 50%!important;"><h3>{{$expertListing->title ?? ''}}</h3><p>{{$expertListing->description ?? ''}}</p></td>
-                                <td style="width: 20%!important;"><a type="button" class="btn btn-primary" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise-edit/{{$expertListing->id ?? ''}}">Edit</a></td>
+                                <td style="width: 20%!important;"><a type="button" class="btn btn-outline-brand" style="width: 200px!important;margin-top: 40px!important"href="{{ url ('') }}/expertise-edit/{{$expertListing->id ?? ''}}">Edit</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -58,10 +64,10 @@
                             <tbody>
                             <tr>
                                 @if($status==false)
-                                <td style="width: 61%!important;" class="text-center"><h2>No expertise listings</h2><p>Create a listing to be found in search</p><a type="button" class="btn btn-primary" style="width: 300px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/expertise/listing">New Area of Expertise</a></td>
+                                <td style="width: 61%!important;" class="text-center"><h2>No expertise listings</h2><p>Create a listing to be found in search</p><a type="button" class="btn btn-primary" style="width: 300px!important;margin-top: 40px!important;color: white;background: rgba(0, 18, 255, 1)!important;border: none"href="{{ url ('') }}/expertise/listing">New Area of Expertise</a></td>
                             @endif
                             @if($clarityUsing==true && $status==true)
-                                <td style="width: 20%!important;"><a type="button" class="btn btn-warning" style="width: 200px!important;margin-top: 40px!important;color: white"href="{{ url ('') }}/clarity-using/{{$expertListing->id ?? ''}}">Start using Clarity</a>
+                                <td style="width: 20%!important;"><a type="button" class="btn btn-warning" style="width: 200px!important;margin-top: 40px!important;border: none;background-color: rgba(0, 18, 255, 1);color: #fff;"href="{{ url ('') }}/clarity-using/{{$expertListing->id ?? ''}}">Start using Clarity</a>
                                 </td>
                                 @endif
                             </tr>
@@ -69,7 +75,7 @@
                         </table>
                         <div style="margin-top: 5px!important;">
                             @if ($errors->any())
-                                <div class="alert alert-warning">
+                                <div class="alert alert-warning" style="background: #5d78ff!important;border: none!important;color: white;">
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>

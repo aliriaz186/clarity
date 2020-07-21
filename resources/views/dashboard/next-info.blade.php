@@ -125,10 +125,10 @@
                             <div class="kt-form__actions">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <button type="button" class="btn btn-primary" onclick="updateInfo()">Save
+                                        <button type="button" class="btn btn-primary" onclick="updateInfo()" style="background: rgba(0, 18, 255, 1)!important;border: none!important">Save
                                         </button>
                                         |
-                                        <a href="{{env('APP_URL')}}/expert-info-page" class="btn btn-warning">Go Back</a>
+                                        <a href="{{env('APP_URL')}}/expert-info-page" class="btn btn-outline-dark">Go Back</a>
                                     </div>
                                 </div>
                             </div>
