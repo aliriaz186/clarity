@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Press Chat</title>
+    <title>PRESS CHAT </title>
     <meta name="description"
-          content="This description shows when you share a link to your page on Facebook or Twitter.">
+          content="Schedule phone calls with verified journalists. Build relationships, get tips on how to pitch and learn how to get your company in the media. ">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="twitter:title" content="My Startup Website">
+    <meta name="twitter:title" content="PRESS CHAT ">
     <meta name="twitter:description"
-          content="This description shows when you share a link to your page on Facebook or Twitter.">
+          content="Schedule phone calls with verified journalists. Build relationships, get tips on how to pitch and learn how to get your company in the media. ">
     <link rel="canonical" href="https://kr402kanl96f.landen.co">
-    <link rel="icon" href="https://cdn.landen.co/defaults/favicon.ico">
-    <link rel="stylesheet" href="./abc.css">
+    <link rel="icon" href="https://cdn.landen.co/kr402kanl96f/assets/4r7y1qi3.png">
+    <link rel="stylesheet" href="./landen.css">
     <style tyle="text/css">body {
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
             font-size: 14px;
@@ -126,19 +126,22 @@
 <body>
 <header id="header" class="section header dark" style="--wr-max:1200px">
     <div class="wr color-1" style="margin-top:10px;margin-bottom:10px">
-        <nav id="headerNav"><a id="headerLogo" href="/" class="header__logo" style="font-weight:500;font-size:26px">PRESS
+        <nav id="headerNav"><a id="headerLogo" href="/" class="header__logo" style="font-weight:500;font-size:28px">PRESS
                 CHAT ☎️</a>
             <div class="spacer"></div>
             <div class="headerNav__links"><a href="/features">Features</a><a href="/pricing">Pricing</a><a href="/faq">FAQ</a>
             </div>
-            <div class="header__navCtas"><a href="{{URL::to('signup')}}" class="btn btn--c btn--primary"
-                                            style="color:#fff;background-color:rgba(0, 18, 255, 1)">Sign Up
+            <div class="header__navCtas"><a href="/dashboard" class="btn btn--c btn--primary"
+                                            style="color:#fff;background-color:rgba(0, 18, 255, 1)">BROWSE JOURNALISTS
                     <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.6 7H1a1 1 0 1 1 0-2h8.6L7 2.4A1 1 0 0 1 8.4 1l4.3 4.2c.2.3.3.5.3.8 0 .3-.1.5-.3.7L8.4 11A1 1 0 1 1 7 9.5L9.6 7z"
                               fill="#fff"></path>
                     </svg>
-                </a><a href="{{URL::to('login')}}" class="btn btn--c btn--primary"
-                       style="color:#fff;background-color:rgba(0, 18, 255, 1)">Login</a></div>
+                </a><a href="{{URL::to('signup')}}" class="btn btn--c btn--primary"
+                       style="color:#fff;background-color:rgba(0, 18, 255, 1)">SIGN UP</a><a href="{{URL::to('login')}}"
+                                                                                           class="btn btn--c btn--primary"
+                                                                                           style="color:#fff;background-color:rgba(0, 18, 255, 1)">LOGIN</a>
+            </div>
         </nav>
         <div id="headerMenuButton" class="burger">Menu</div>
     </div>
@@ -149,13 +152,13 @@
                 <li><a href="/features" class="drawerLink">Features </a></li>
                 <li><a href="/pricing" class="drawerLink">Pricing </a></li>
                 <li><a href="/faq" class="drawerLink">FAQ </a></li>
-                <li><a href="/signup" class="drawerLink col-dark">Sign Up
+                <li><a href="/signup" class="drawerLink col-dark">BROWSE JOURNALISTS
                         <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.557 7H1a1 1 0 1 1 0-2h8.586L7.007 2.421a1 1 0 0 1 1.414-1.414l4.243 4.243c.203.202.3.47.292.736a.997.997 0 0 1-.292.735L8.42 10.964A1 1 0 1 1 7.007 9.55L9.557 7z"
                                   fill="currentColor"></path>
                         </svg>
                     </a></li>
-                <li><a href="/login" class="drawerLink col-dark">Login
+                <li><a href="{{URL::to('login')}}" class="drawerLink col-dark">LOGIN
                         <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.557 7H1a1 1 0 1 1 0-2h8.586L7.007 2.421a1 1 0 0 1 1.414-1.414l4.243 4.243c.203.202.3.47.292.736a.997.997 0 0 1-.292.735L8.42 10.964A1 1 0 1 1 7.007 9.55L9.557 7z"
                                   fill="currentColor"></path>
@@ -180,19 +183,18 @@
     <div class="ft ft--left" style="--pdx-pt:0;--pdx-pb:0">
         <div class="ft__half">
             <div class="ft__wrapper" style="max-width:570px">
-                <div class="ft__content"><h1 class="hero__title color-1 weight-title-h font-title">SCHEDULE <em><strong>PHONE
-                                CALLS</strong></em> WITH TOP JOURNALISTS ☎️</h1>
-                    <p class="hero__subtitle weight-text">Looking to get your business featured on top media outlets?
-                        Learn how to do it right from the pros.</p>
-                    <div class="ctas"><a href="" class="btn btn--c btn--primary btn--large"
+                <div class="ft__content"><h1 class="hero__title color-1 weight-title-h font-title">
+                        <em><strong>CHAT</strong></em> W/THE PRESS ☎️</h1>
+                    <p class="hero__subtitle weight-text">Schedule phone calls with verified journalists.</p>
+                    <div class="ctas"><a href="{{URL::to('/login')}}" class="btn btn--c btn--primary btn--large"
                                          style="color:#fff;background-color:rgba(0, 18, 255, 1)">I&#x27;M A JOURNALIST
                             🙋‍♀️
                             <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.6 7H1a1 1 0 1 1 0-2h8.6L7 2.4A1 1 0 0 1 8.4 1l4.3 4.2c.2.3.3.5.3.8 0 .3-.1.5-.3.7L8.4 11A1 1 0 1 1 7 9.5L9.6 7z"
                                       fill="#fff"></path>
                             </svg>
-                        </a><a href="" class="btn btn--c btn--primary btn--large"
-                               style="color:#fff;background-color:rgba(0, 18, 255, 1)">TALK TO A JOURNALIST ☎️
+                        </a><a href="{{URL::to('/dashboard')}}" class="btn btn--c btn--primary btn--large"
+                               style="color:#fff;background-color:rgba(0, 18, 255, 1)">BROWSE JOURNALISTS ☎️
                             <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.6 7H1a1 1 0 1 1 0-2h8.6L7 2.4A1 1 0 0 1 8.4 1l4.3 4.2c.2.3.3.5.3.8 0 .3-.1.5-.3.7L8.4 11A1 1 0 1 1 7 9.5L9.6 7z"
                                       fill="#fff"></path>
@@ -310,7 +312,7 @@
 </div>
 <div id="press" class="section section--logos section--center"
      style="background-color:rgba(0, 18, 255, 1);padding-bottom:30px;padding-top:30px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">CONNECT WITH VERIFIED
+    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">CHAT WITH VERIFIED
             JOURNALISTS <br>FROM TOP TIER OUTLETS ✅</h2>
         <div class="logos logos--fill">
             <div class="logos__logo"
@@ -331,38 +333,32 @@
     <div class="wr">
         <div class="logos logos--fill">
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/6wcz22k6.png)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/3midja09.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/zudea26u.jpg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/kk073vdl.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/fortune.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/d7uu0om5.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/inc500.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/gosnhxvz.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/huffingtonpost.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/yq0iycax.png)"></div>
         </div>
     </div>
 </div>
 <div id="press" class="section section--logos section--center"
-     style="background-color:rgba(0, 18, 255, 1);padding-bottom:60px;padding-top:30px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="divider divider--wave">
-        <svg viewBox="0 0 1695 57" preserveAspectRatio="none">
-            <path d="M0 23c135.4 19 289.6 28.5 462.5 28.5C721.9 51.5 936.7 1 1212.2 1 1395.8.9 1556.7 8.3 1695 23v34H0V23z"
-                  fill="rgba(255, 255, 255, 1)" fill-rule="evenodd"></path>
-        </svg>
-    </div>
+     style="background-color:rgba(0, 18, 255, 1);padding-bottom:30px;padding-top:30px;--pdx-min-height:0px;--wr-max:1200px">
     <div class="wr">
         <div class="logos logos--fill">
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/entrepreneur.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/tq97nnxp.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/forbes.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/5dwozwey.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/fortune.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/lhv99vnv.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/inc500.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/d6cbatdg.png)"></div>
             <div class="logos__logo"
-                 style="background-image:url(https://landen.imgix.net/defaults/logos/huffingtonpost.svg)"></div>
+                 style="background-image:url(https://landen.imgix.net/kr402kanl96f/assets/z3nvyi8g.png)"></div>
         </div>
     </div>
 </div>
@@ -374,7 +370,7 @@
                   fill-rule="evenodd"></path>
         </svg>
     </div>
-    <div class="wr">
+    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">GET CONNECTED</h2>
         <div class="grid grid--undefined">
             <div class="gridItem">
                 <div class="iconWrapper medium circle" style="width:34px;height:34px">
@@ -382,15 +378,13 @@
                         <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
                                 fill-rule="nonzero"></circle>
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="#fff" height="34" width="34"
+                         viewBox="0 0 640 512">
+                        <path d="M519.2 127.9l-47.6-47.6A56.252 56.252 0 0 0 432 64H205.2c-14.8 0-29.1 5.9-39.6 16.3L118 127.9H0v255.7h64c17.6 0 31.8-14.2 31.9-31.7h9.1l84.6 76.4c30.9 25.1 73.8 25.7 105.6 3.8 12.5 10.8 26 15.9 41.1 15.9 18.2 0 35.3-7.4 48.8-24 22.1 8.7 48.2 2.6 64-16.8l26.2-32.3c5.6-6.9 9.1-14.8 10.9-23h57.9c.1 17.5 14.4 31.7 31.9 31.7h64V127.9H519.2zM48 351.6c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16c0 8.9-7.2 16-16 16zm390-6.9l-26.1 32.2c-2.8 3.4-7.8 4-11.3 1.2l-23.9-19.4-30 36.5c-6 7.3-15 4.8-18 2.4l-36.8-31.5-15.6 19.2c-13.9 17.1-39.2 19.7-55.3 6.6l-97.3-88H96V175.8h41.9l61.7-61.6c2-.8 3.7-1.5 5.7-2.3H262l-38.7 35.5c-29.4 26.9-31.1 72.3-4.4 101.3 14.8 16.2 61.2 41.2 101.5 4.4l8.2-7.5 108.2 87.8c3.4 2.8 3.9 7.9 1.2 11.3zm106-40.8h-69.2c-2.3-2.8-4.9-5.4-7.7-7.7l-102.7-83.4 12.5-11.4c6.5-6 7-16.1 1-22.6L367 167.1c-6-6.5-16.1-6.9-22.6-1l-55.2 50.6c-9.5 8.7-25.7 9.4-34.6 0-9.3-9.9-8.5-25.1 1.2-33.9l65.6-60.1c7.4-6.8 17-10.5 27-10.5l83.7-.2c2.1 0 4.1.8 5.5 2.3l61.7 61.6H544v128zm48 47.7c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16c0 8.9-7.2 16-16 16z"></path>
                     </svg>
                 </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
+                <h3 class="gridItem__title color-1 weight-text-m">Build Relationships</h3>
+                <div class="gridItem__description"><p>PR is all about who you know. Meet the right contacts. </p></div>
             </div>
             <div class="gridItem">
                 <div class="iconWrapper medium circle" style="width:34px;height:34px">
@@ -398,15 +392,14 @@
                         <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
                                 fill-rule="nonzero"></circle>
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="#fff" height="34" width="34"
+                         viewBox="0 0 512 512">
+                        <path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"></path>
                     </svg>
                 </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
+                <h3 class="gridItem__title color-1 weight-text-m">Get Pitch Tips</h3>
+                <div class="gridItem__description"><p>Pitching is an art. Get tips on how to pitch your story. </p>
+                </div>
             </div>
             <div class="gridItem">
                 <div class="iconWrapper medium circle" style="width:34px;height:34px">
@@ -414,286 +407,66 @@
                         <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
                                 fill-rule="nonzero"></circle>
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="#fff" height="34" width="34"
+                         viewBox="0 0 512 512">
+                        <path d="M496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM464 96H345.94c-21.38 0-32.09 25.85-16.97 40.97l32.4 32.4L288 242.75l-73.37-73.37c-12.5-12.5-32.76-12.5-45.25 0l-68.69 68.69c-6.25 6.25-6.25 16.38 0 22.63l22.62 22.62c6.25 6.25 16.38 6.25 22.63 0L192 237.25l73.37 73.37c12.5 12.5 32.76 12.5 45.25 0l96-96 32.4 32.4c15.12 15.12 40.97 4.41 40.97-16.97V112c.01-8.84-7.15-16-15.99-16z"></path>
                     </svg>
                 </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
-            </div>
-            <div class="gridItem">
-                <div class="iconWrapper medium circle" style="width:34px;height:34px">
-                    <svg class="backdrop" width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
-                                fill-rule="nonzero"></circle>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
-            </div>
-            <div class="gridItem">
-                <div class="iconWrapper medium circle" style="width:34px;height:34px">
-                    <svg class="backdrop" width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
-                                fill-rule="nonzero"></circle>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
-            </div>
-            <div class="gridItem">
-                <div class="iconWrapper medium circle" style="width:34px;height:34px">
-                    <svg class="backdrop" width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="40" cy="42" r="14" transform="translate(-26 -28)" fill="rgba(0, 18, 255, 1)"
-                                fill-rule="nonzero"></circle>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none"
-                         stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                        <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </div>
-                <div class="gridItem__title color-1 weight-text-m">Grid Item One</div>
-                <div class="gridItem__description"><p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.</p></div>
+                <h3 class="gridItem__title color-1 weight-text-m">Trending News</h3>
+                <div class="gridItem__description"><p>Discuss trending news to get pitch topic ideas. </p></div>
             </div>
         </div>
     </div>
 </div>
 <div id="zigzag" class="section section--zigzag section--center dark"
      style="background-color:rgba(249, 249, 249, 1);padding-bottom:60px;padding-top:60px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">How it works</h2>
+    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">HOW IT WORKS</h2>
         <div class="zigzag">
             <div class="zigzagItem zigzagItem--right">
                 <div class="zigzagItem__content"><span class="zigzagItem__number">#1</span>
-                    <h3 class="zigzagItem__title color-1 weight-text-m">Step one</h3>
-                    <div class="zigzagItem__text"><p>Description for step 1.</p></div>
+                    <h3 class="zigzagItem__title color-1 weight-text-m">Browse</h3>
+                    <div class="zigzagItem__text"><p>Browse journalist profiles based on outlets you want to learn
+                            from. </p></div>
                 </div>
                 <div class="zigzagItem__graphic"><img src="https://assets.landen.co/1/search_2dfv.svg"
                                                       class="media media--image"
                                                       srcset="https://assets.landen.co/1/search_2dfv.svg 2x"></div>
             </div>
             <div class="zigzagItem zigzagItem--left">
-                <div class="zigzagItem__graphic"><img src="https://assets.landen.co/1/people_search_wctu.svg"
+                <div class="zigzagItem__graphic"><img src="https://assets.landen.co/1/calendar_dutt.svg"
                                                       class="media media--image"
-                                                      srcset="https://assets.landen.co/1/people_search_wctu.svg 2x">
-                </div>
+                                                      srcset="https://assets.landen.co/1/calendar_dutt.svg 2x"></div>
                 <div class="zigzagItem__content"><span class="zigzagItem__number">#2</span>
-                    <h3 class="zigzagItem__title color-1 weight-text-m">Step two</h3>
-                    <div class="zigzagItem__text"><p>Description for step 2.</p></div>
+                    <h3 class="zigzagItem__title color-1 weight-text-m">Schedule</h3>
+                    <div class="zigzagItem__text"><p>Schedule calls with your favorite journalists. </p></div>
                 </div>
             </div>
             <div class="zigzagItem zigzagItem--right">
                 <div class="zigzagItem__content"><span class="zigzagItem__number">#3</span>
-                    <h3 class="zigzagItem__title color-1 weight-text-m">Step three</h3>
-                    <div class="zigzagItem__text"><p>Description for step 3.</p></div>
+                    <h3 class="zigzagItem__title color-1 weight-text-m">Chat</h3>
+                    <div class="zigzagItem__text"><p>Chat with the journalist. </p></div>
                     <a href="/start" class="btn btn--c btn--secondary" style="color:rgba(0, 18, 255, 1)">Get Started</a>
                 </div>
-                <div class="zigzagItem__graphic"><img src="https://assets.landen.co/1/calling_kpbp.svg"
+                <div class="zigzagItem__graphic"><img src="https://assets.landen.co/1/mobile_prle.svg"
                                                       class="media media--image"
-                                                      srcset="https://assets.landen.co/1/calling_kpbp.svg 2x"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="feature" class="section section--feature section--noPadding section--left dark"
-     style="background-color:#fff;--pdx-min-height:500px;--wr-max:1200px">
-    <div class="ft ft--left" style="--pdx-pt:0;--pdx-pb:0">
-        <div class="ft__half">
-            <div class="ft__wrapper" style="max-width:570px">
-                <div class="ft__content"><h2 class="color-1 weight-title-h font-title section__title left noMargin">Your
-                        great feature</h2>
-                    <p class="weight-text section__subtitle left noMargin">Use this section to show off one of your
-                        features in great detail. You can add a list of bullet-points with custom icons, checkmarks and
-                        a product display.</p>
-                    <div class="ftChecks col-sec">
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Looks great
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Easy to use
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Try it yourself!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ft__half pdx pdxParent--img-transparent" style="--pdx-maxheight:1">
-            <div class="pdxItem pdxItem--img-transparent"><img src="https://assets.landen.co/8/12_message_sent.svg">
-            </div>
-        </div>
-    </div>
-</div>
-<div id="feature" class="section section--feature section--noPadding section--right dark"
-     style="background-color:#fff;--pdx-min-height:500px;--wr-max:1200px">
-    <div class="ft ft--right" style="--pdx-pt:0;--pdx-pb:0">
-        <div class="ft__half pdx pdxParent--img-transparent" style="--pdx-maxheight:1">
-            <div class="pdxItem pdxItem--img-transparent"><img src="https://assets.landen.co/8/16_upgrade.svg"></div>
-        </div>
-        <div class="ft__half">
-            <div class="ft__wrapper" style="max-width:570px">
-                <div class="ft__content"><h2 class="color-1 weight-title-h font-title section__title right noMargin">
-                        Your great feature</h2>
-                    <p class="weight-text section__subtitle right noMargin">Use this section to show off one of your
-                        features in great detail. You can add a list of bullet-points with custom icons, checkmarks and
-                        a product display.</p>
-                    <div class="ftChecks col-sec">
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Looks great
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Easy to use
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Try it yourself!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="feature" class="section section--feature section--noPadding section--left dark"
-     style="background-color:#fff;--pdx-min-height:500px;--wr-max:1200px">
-    <div class="ft ft--left" style="--pdx-pt:0;--pdx-pb:0">
-        <div class="ft__half">
-            <div class="ft__wrapper" style="max-width:570px">
-                <div class="ft__content"><h2 class="color-1 weight-title-h font-title section__title left noMargin">Your
-                        great feature</h2>
-                    <p class="weight-text section__subtitle left noMargin">Use this section to show off one of your
-                        features in great detail. You can add a list of bullet-points with custom icons, checkmarks and
-                        a product display.</p>
-                    <div class="ftChecks col-sec">
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Looks great
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Easy to use
-                        </div>
-                        <div class="ftCheck">
-                            <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                        <polygon id="check"
-                                                 points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                            Try it yourself!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ft__half pdx pdxParent--img-transparent" style="--pdx-maxheight:1">
-            <div class="pdxItem pdxItem--img-transparent"><img src="https://assets.landen.co/8/17_fatal_error.svg">
+                                                      srcset="https://assets.landen.co/1/mobile_prle.svg 2x"></div>
             </div>
         </div>
     </div>
 </div>
 <div id="pricing" class="section section--pricing section--center dark"
      style="background-color:#fff;padding-bottom:60px;padding-top:60px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center">Simple, transparent
-            pricing.</h2>
-        <p class="weight-text section__subtitle center">Always know what you&#39;ll Pay</p>
+    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center">SIMPLE PRICING.</h2>
+        <p class="weight-text section__subtitle center">Journalists set their price so you always know what you&#39;ll
+            pay for a call.</p>
         <div class="pricing">
-            <div id="pricingTiers_zr9i9fyumf" class="pricingTiers active-a">
+            <div id="pricingTiers_ilgesusqkr9" class="pricingTiers active-a">
                 <div class="pricingTierWrapper"
                      style="border-radius:undefinedpx;box-shadow:0 2px 5px 0 rgba(0,0,0,0.15);background-color:">
-                    <div class="pricingTier"><h3 class="pricingTier__title color-1 weight-text-m">Small</h3>
-                        <p class="pricingTier__description">This layout looks best with 2-3 tiers.</p>
-                        <div class="pricingTier__price a"><span class="price color-1">$49</span><span class="interval">/ mo</span>
-                        </div>
+                    <div class="pricingTier"><h3 class="pricingTier__title color-1 weight-text-m">Set Pricing</h3>
+                        <p class="pricingTier__description">Choose the journalist <br>that fits your criteria.</p>
+                        <div class="pricingTier__price a"><span class="price color-1">$49-$999</span><span
+                                    class="interval">/ call</span></div>
                         <ul class="pricingTier__features">
                             <li class="color-1">
                                 <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
@@ -705,7 +478,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <span>Your great feature</span></li>
+                                <span>Browse journalists</span></li>
                             <li class="color-1">
                                 <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -716,7 +489,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <span>Another important thing</span></li>
+                                <span>Schedule a phone call</span></li>
                             <li class="color-1">
                                 <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -727,99 +500,9 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <span>You can add many more</span></li>
+                                <span>Get tips and build relationships</span></li>
                         </ul>
-                        <a href="/start" class="btn btn--c btn--secondary" style="color:rgba(0, 18, 255, 1)">Sign Up</a>
-                    </div>
-                </div>
-                <div class="pricingTierWrapper"
-                     style="border-radius:undefinedpx;box-shadow:0 2px 5px 0 rgba(0,0,0,0.15);background-color:">
-                    <div class="pricingTier"><h3 class="pricingTier__title color-1 weight-text-m">Growth</h3>
-                        <p class="pricingTier__description">If you have more tiers or lots of features, try the
-                            table.</p>
-                        <div class="pricingTier__price a"><span class="price color-1">$99</span><span class="interval">/ mo</span>
-                        </div>
-                        <ul class="pricingTier__features">
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>Your great feature</span></li>
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>Another important thing</span></li>
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>You can add many more</span></li>
-                        </ul>
-                        <a href="/start" class="btn btn--c btn--secondary" style="color:rgba(0, 18, 255, 1)">Sign Up</a>
-                    </div>
-                </div>
-                <div class="pricingTierWrapper"
-                     style="border-radius:undefinedpx;box-shadow:0 2px 5px 0 rgba(0,0,0,0.15);background-color:">
-                    <div class="pricingTier"><h3 class="pricingTier__title color-1 weight-text-m">Large</h3>
-                        <p class="pricingTier__description">You can set the color of these boxes in the Tier BG
-                            settings.</p>
-                        <div class="pricingTier__price a"><span class="price color-1">$199</span><span class="interval">/ mo</span>
-                        </div>
-                        <ul class="pricingTier__features">
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>Your great feature</span></li>
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>Another important thing</span></li>
-                            <li class="color-1">
-                                <svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <g id="ui-icons" transform="translate(-109.000000, -67.000000)" fill="#22BC66">
-                                            <polygon id="check"
-                                                     points="108.994099 76.4000626 115.987848 83.419577 129.407253 69.9978283 126.587674 67.1592372 115.987848 77.7490936 111.827057 73.5894775"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>You can add many more</span></li>
-                        </ul>
-                        <a href="/start" class="btn btn--c btn--secondary" style="color:rgba(0, 18, 255, 1)">Sign Up</a>
+                        <a href="{{URL::to('signup')}}" class="btn btn--c btn--secondary" style="color:rgba(0, 18, 255, 1)">Sign Up</a>
                     </div>
                 </div>
             </div>
@@ -828,113 +511,31 @@
 </div>
 <div id="faq" class="section section--faq section--center dark"
      style="background-color:#fff;padding-bottom:60px;padding-top:60px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">FAQ</h2>
+    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center standalone">FAQs</h2>
         <div class="faq">
             <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Can I pitch the journalist my
                     story?</h3>
-                <div class="faqItem__answer">No. We don&#39;t want you to see this as a transactional engagement. Look
-                    at it as a way to develop a relationship and learn the best way to approach journalists.
+                <div class="faqItem__answer">We don&#39;t want you to see this as a transactional engagement. Look at it
+                    as a way to develop a relationship and learn the best way to approach journalists.
                 </div>
             </div>
-            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Question two?</h3>
-                <div class="faqItem__answer">Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                    consequat massa quis enim.
+            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Is this like Clarity.FM?</h3>
+                <div class="faqItem__answer">Yes, exactly. Except our marketplace is focused solely on journalists and
+                    the media.
                 </div>
             </div>
-            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Question three?</h3>
-                <div class="faqItem__answer">In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
-                    dictum felis eu pede mollis pretium.
+            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Why do I have to pay?</h3>
+                <div class="faqItem__answer">Journalists are busy, and in an effort to respect their time, we&#39;ve
+                    created this platform to compensate them for their expertise and time. Plus, it&#39;s a great way to
+                    build relationships.
                 </div>
             </div>
-            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">Question four?</h3>
-                <div class="faqItem__answer">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                    ligula eget dolor. Aenean massa.
+            <div class="faqItem"><h3 class="color weight-text-h faqItem__question">How do I apply to become a
+                    journalist?</h3>
+                <div class="faqItem__answer">We&#39;re always seeking new journalists. Submit on our journalist page.
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="contact" class="section section--contact section--center dark"
-     style="background-color:#fff;padding-bottom:60px;padding-top:60px;--pdx-min-height:0px;--wr-max:1200px">
-    <div class="wr"><h2 class="color-1 weight-title-h font-title section__title center">Contact us</h2>
-        <p class="weight-text section__subtitle center">Got any questions? Don&#39;t hesitate to reach out.</p>
-        <form class="contact" id="contact_wy3fuqct96g" data-siteid="kr402kanl96f">
-            <div class="contact__item"><label class="weight-text-m">Full Name</label><input type="text"
-                                                                                            id="contactName_wy3fuqct96g"
-                                                                                            placeholder="Jane Doe"
-                                                                                            class="color-1"></div>
-            <div class="contact__row">
-                <div class="contact__item"><label class="weight-text-m">Email Address</label><input type="email"
-                                                                                                    id="contactEmail_wy3fuqct96g"
-                                                                                                    placeholder="jane.doe@mail.com"
-                                                                                                    class="color-1">
-                </div>
-                <div class="contact__item"><label class="weight-text-m">Phone (Optional)</label><input type="text"
-                                                                                                       id="contactPhone_wy3fuqct96g"
-                                                                                                       placeholder="(123) 456-7890"
-                                                                                                       class="color-1">
-                </div>
-            </div>
-            <div class="contact__item"><label class="weight-text-m">Your Message</label><textarea
-                        id="contactMessage_wy3fuqct96g" class="color-1"></textarea></div>
-            <div id="contactCaptcha_wy3fuqct96g" class="contact__captcha">
-                <div class="contact__item"><label class="weight-text-m">Security Image</label>
-                    <div id="contactCaptchaImage_wy3fuqct96g"></div>
-                </div>
-                <div class="contact__item"><label class="weight-text-m">Type the numbers from the image
-                        above</label><input type="text" id="contactCaptchaSolution_wy3fuqct96g" class="color-1"></div>
-            </div>
-            <div id="contactError_wy3fuqct96g" class="contact__error"></div>
-            <button id="contactSubmit_wy3fuqct96g" class="btn btn--c btn--primary btn--large"
-                    style="color:#fff;background-color:rgba(0, 18, 255, 1)">Send Message
-            </button>
-        </form>
-        <script>!function () {
-                var n = document.getElementById("contact_wy3fuqct96g"),
-                    i = document.getElementById("contactSubmit_wy3fuqct96g"),
-                    d = document.getElementById("contactName_wy3fuqct96g"),
-                    u = document.getElementById("contactEmail_wy3fuqct96g"),
-                    r = document.getElementById("contactPhone_wy3fuqct96g"),
-                    l = document.getElementById("contactMessage_wy3fuqct96g"),
-                    a = document.getElementById("contactError_wy3fuqct96g"),
-                    m = document.getElementById("contactCaptcha_wy3fuqct96g"),
-                    g = document.getElementById("contactCaptchaSolution_wy3fuqct96g"),
-                    y = document.getElementById("contactCaptchaImage_wy3fuqct96g");
-
-                function e(e) {
-                    e.preventDefault();
-                    var s, o, t = {
-                        path: window.location.pathname,
-                        siteId: n.getAttribute("data-siteid"),
-                        name: d.value,
-                        email: u.value,
-                        phone: r.value,
-                        message: l.value,
-                        cs: g.value,
-                        cid: g.getAttribute("data-cid")
-                    };
-                    !function (e) {
-                        var t = !1;
-                        e.name.length < 2 ? t = "Please enter your name" : e.email.length < 6 ? t = "Please enter your email address" : e.message.length < 4 ? t = "Please enter a message" : e.cid && e.cs.length < 6 && (t = "Please enter the numbers from the security image");
-                        a.innerText = t || "";
-                        return !1 === t
-                    }(t) || (i.classList.add("btn--loading"), s = t, (o = new XMLHttpRequest).open("POST", window.location.origin + "/api/contact", !0), o.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"), o.send(JSON.stringify(s)), o.onload = function () {
-                        var e, t, n, a, c;
-                        i.classList.remove("btn--loading"), 200 <= this.status && this.status < 400 ? (e = JSON.parse(o.responseText)).success ? (d.value = "", u.value = "", r.value = "", l.value = "", g.value = "", g.setAttribute("data-cid", ""), m.classList.remove("isVisible"), i.classList.add("btn--success"), setTimeout(function () {
-                            i.classList.remove("btn--success")
-                        }, 2e3), a = s.siteId, (c = new XMLHttpRequest).open("POST", "/api/event", !0), c.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"), c.send(JSON.stringify({
-                            siteId: a,
-                            category: "contactForm",
-                            name: "Contact Form",
-                            data: {page: window.location.pathname}
-                        }))) : e.captcha && (t = e, (n = document.createElement("img")).setAttribute("src", t.captcha), y.innerHTML = "", y.appendChild(n), m.classList.add("isVisible"), g.setAttribute("data-cid", t.captchaId)) : console.log("error")
-                    }, o.onerror = function () {
-                        a.innerText = "A network error occured. Please make sure you are connected to the internet."
-                    })
-                }
-
-                n.addEventListener("submit", e), i.addEventListener("click", e)
-            }()</script>
     </div>
 </div>
 <div id="cta" class="section section--cta section--center dark"
@@ -942,12 +543,20 @@
     <div class="wr">
         <div class="cta__titles"><h2 class="color-1 weight-title-h font-title section__title center">Ready to get
                 started?</h2>
-            <p class="weight-text section__subtitle center">Contact us or sign up now.</p></div>
-        <div class="ctas"><a href="/login" class="btn btn--c btn--primary btn--large"
-                             style="color:#fff;background-color:rgba(0, 18, 255, 1)">Get Started</a><a href="/contact"
-                                                                                                       class="btn btn--c btn--secondary btn--large"
-                                                                                                       style="color:rgba(0, 18, 255, 1)">Contact
-                Us</a></div>
+            <p class="weight-text section__subtitle center">Start browsing journalists now.</p></div>
+        <div class="ctas"><a href="{{URL::to('login')}}" class="btn btn--c btn--primary btn--large"
+                             style="color:#fff;background-color:rgba(0, 18, 255, 1)">I&#x27;M A JOURNALIST 🙋‍♀️
+                <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.6 7H1a1 1 0 1 1 0-2h8.6L7 2.4A1 1 0 0 1 8.4 1l4.3 4.2c.2.3.3.5.3.8 0 .3-.1.5-.3.7L8.4 11A1 1 0 1 1 7 9.5L9.6 7z"
+                          fill="#fff"></path>
+                </svg>
+            </a><a href="{{URL::to('/dashboard')}}" class="btn btn--c btn--primary btn--large"
+                   style="color:#fff;background-color:rgba(0, 18, 255, 1)">BROWSE JOURNALISTS ☎️
+                <svg width="13" height="12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.6 7H1a1 1 0 1 1 0-2h8.6L7 2.4A1 1 0 0 1 8.4 1l4.3 4.2c.2.3.3.5.3.8 0 .3-.1.5-.3.7L8.4 11A1 1 0 1 1 7 9.5L9.6 7z"
+                          fill="#fff"></path>
+                </svg>
+            </a></div>
     </div>
 </div>
 <footer id="footer" class="section section--footer section--center section--a3zp1wjn6zh"
@@ -974,7 +583,8 @@
             a = (document.getElementById("headerDrawer"), document.getElementById("headerDrawerBackdrop")),
             o = document.getElementById("headerLogo"), i = document.getElementById("headerNav"),
             c = document.querySelector("#headerNav .headerNav__links"),
-            h = document.querySelector("#headerNav .header__navCtas"), s = o.offsetWidth, l = c.offsetWidth + h.offsetWidth,
+            h = document.querySelector("#headerNav .header__navCtas"), s = o.offsetWidth,
+            l = c.offsetWidth + h.offsetWidth,
             u = i.classList.contains("logoCenter");
         n.onclick = t, a.onclick = t, window.addEventListener("resize", e), e()
     }()</script>

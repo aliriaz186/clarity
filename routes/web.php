@@ -57,3 +57,12 @@ Route::get('expertise-edit/{id}', 'DashboardController@editExpertise');
 Route::get('clarity-using/{id}', 'DashboardController@clarityUsing');
 Route::get('call-request', 'DashboardController@showCallRequests');
 Route::get('calls', 'DashboardController@showCallHistory');
+Route::post('forgot-password-request', 'DashboardController@forgotPasswordRequest');
+Route::get('set-password/{email}/get', 'DashboardController@setPasswordPage');
+Route::post('forgot-password-change', 'DashboardController@changePassword');
+//admin routes
+Route::get('/admin','AdminContoller@getLoginView');
+Route::post('/admin/signin', 'AdminContoller@login');
+Route::post('/approve/request', 'AdminContoller@approveRequest');
+Route::get('/admin-dashboard','AdminContoller@dashboard')->middleware('adminAuth');
+Route::get('/journalist-requests','AdminContoller@journalRequests')->middleware('adminAuth');

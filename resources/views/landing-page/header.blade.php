@@ -7,7 +7,7 @@
     <meta charset="utf-8"/>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="https://cdn.landen.co/defaults/favicon.ico">
+    <link rel="icon" href="https://cdn.landen.co/kr402kanl96f/assets/4r7y1qi3.png">
 
     <!--begin::Fonts -->
     <link rel="stylesheet"

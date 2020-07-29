@@ -12,6 +12,14 @@ use App\Technician;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use services\email_services\EmailAddress;
+use services\email_services\EmailBody;
+use services\email_services\EmailMessage;
+use services\email_services\EmailSender;
+use services\email_services\EmailSubject;
+use services\email_services\MailConf;
+use services\email_services\PhpMail;
+use services\email_services\SendEmailService;
 
 class DashboardController extends Controller
 {
@@ -168,5 +176,39 @@ class DashboardController extends Controller
             $callRequests[$i]['journalistPhoneNumber'] = ProfileTable::where('user_id', $userId)->first()['cell_phone'];
         }
         return view('dashboard/user-calls-history')->with(['callRequests' => $callRequests]);
+    }
+
+    public function forgotPasswordRequest(Request $request)
+    {
+        $userEmail = $request->email;
+        if (!User::where('email', $userEmail)->exists()) {
+            return json_encode(['status' => false, 'message' => 'Email Not registered']);
+        }
+        $subject = new SendEmailService(new EmailSubject("Forgot Password Request. Click On link to change password"));
+        $mailTo = new EmailAddress($userEmail);
+        $emailBody = env('APP_URL') . "/set-password/" . $userEmail . "/get";
+        $body = new EmailBody($emailBody);
+        $emailMessage = new EmailMessage($subject->getEmailSubject(), $mailTo, $body);
+        $sendEmail = new EmailSender(new PhpMail(new MailConf(env('MAIL_HOST'), env('MAIL_USERNAME'), env('MAIL_PASSWORD'))));
+        $result = $sendEmail->send($emailMessage);
+        return json_encode(['status' => $result, 'message' => 'Email sent successfully']);
+    }
+
+    public function setPasswordPage($email)
+    {
+        if (!User::where('email', $email)->exists()) {
+            return json_encode("Access Denied");
+        }
+        return view('dashboard/set-password-view')->with(['email' => $email]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        if (!User::where('email', $request->email)->exists()) {
+            return json_encode(['status' => false, 'message' => 'Access Denied']);
+        }
+        $user = User::where('email', $request->email)->first();
+        $user->password = md5($request->password);
+        return json_encode(['status' => $user->update(), 'message' => 'Password updated successfully!']);
     }
 }

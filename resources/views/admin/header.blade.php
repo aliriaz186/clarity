@@ -86,67 +86,27 @@
             <!-- end:: Aside --
 
             <!-- begin:: Aside Menu -->
-            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper" style="background: #646fff">
+            <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper"
+                 style="background: #646fff">
                 <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
                      data-ktmenu-dropdown-timeout="500" style="background: #646fff">
                     <ul class="kt-menu__nav" style="background: #646fff">
                         <li class="kt-menu__section ">
-                            <h4 class="kt-menu__section-text" style="color: white!important;">Menu</h4>
+                            <h4 class="kt-menu__section-text" style="color: white!important;">Admin</h4>
                             <i class="kt-menu__section-icon flaticon-more-v2"></i>
                         </li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'profile-dashboard') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-dashboard"
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'admin-dashboard') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/admin-dashboard"
                                                     class="kt-menu__link "><span
                                         class="kt-menu__link-icon"><i class="fas fa-user-circle"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Profile</span></a></li>
-                        <li class="kt-menu__item kt-menu__item--submenu {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--open' : '' }} {{ (Request::segment(1) == 'outlet') ? 'kt-menu__item--open' : '' }}"
-                            aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
-                                                                                       class="kt-menu__link kt-menu__toggle"><span
-                                        class="kt-menu__link-icon"><i class="fas fa-user"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Edit Profile</span><i
-                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item {{ (Request::segment(1) == 'basic-information') ? 'kt-menu__item--active' : '' }}"
-                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/basic-information"
-                                                                class="kt-menu__link "><i
-                                                    class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                                    class="kt-menu__link-text" style="color: white!important;">Basic Information</span></a></li>
-                                    <li class="kt-menu__item {{ (Request::segment(1) == 'profile-photo') ? 'kt-menu__item--active' : '' }}"
-                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/profile-photo"
-                                                                class="kt-menu__link "><i
-                                                    class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                                    class="kt-menu__link-text" style="color: white!important;">Profile Photo</span></a></li>
-                                    <li class="kt-menu__item {{ (Request::segment(1) == 'outlet') ? 'kt-menu__item--active' : '' }}"
-                                        aria-haspopup="true"><a href="{{env('APP_URL')}}/outlet" class="kt-menu__link "><i
-                                                    class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                                    class="kt-menu__link-text" style="color: white!important;">Outlet</span></a></li>
-                                </ul>
-                            </div>
+                                        class="kt-menu__link-text" style="color: white!important;">All Users</span></a>
+                        </li><br>
+                        <li class="kt-menu__item {{ (Request::segment(1) == 'journalist-requests') ? 'kt-menu__item--active' : '' }}"
+                            aria-haspopup="true"><a href="{{env('APP_URL')}}/journalist-requests"
+                                                    class="kt-menu__link "><span
+                                        class="kt-menu__link-icon"><i class="fas fa-user-tie"></i></span><span
+                                        class="kt-menu__link-text" style="color: white!important;">Journalist Requests</span></a>
                         </li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'expert-info-page') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/expert-info-page"
-                                                    class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-user-graduate"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Apply to be an expert</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'calls') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/calls"
-                                                    class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Calls</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'call-request') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/call-request"
-                                                    class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-phone-alt"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Calls Requests</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'payment') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/payment" class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fab fa-cc-mastercard"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Payment</span></a></li>
-                        <li class="kt-menu__item {{ (Request::segment(1) == 'money') ? 'kt-menu__item--active' : '' }}"
-                            aria-haspopup="true"><a href="{{env('APP_URL')}}/money" class="kt-menu__link "><span
-                                        class="kt-menu__link-icon"><i class="fas fa-hand-holding-usd"></i></span><span
-                                        class="kt-menu__link-text" style="color: white!important;">Money</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -155,7 +115,8 @@
         </div>
 
         <!-- end:: Aside -->
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper" style="color: #646fff!important;">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper"
+             style="color: #646fff!important;">
             <!-- begin:: Header -->
             <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
 
@@ -163,7 +124,8 @@
 
                 <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
                     <div class="mt-4">
-                        <a class="dashboard-button ml-5" href="{{env('APP_URL')}}/dashboard" style="color: black!important;font-weight: bold!important;">Dashboard</a>
+                        <a class="dashboard-button ml-5" href="{{env('APP_URL')}}/admin-dashboard"
+                           style="color: black!important;font-weight: bold!important;font-size: 17px;margin-left: 10px!important;">Press-Chat Admin</a>
                     </div>
                 </div>
                 <!-- end:: Header Menu -->
@@ -174,7 +136,8 @@
                         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                             <div class="kt-header__topbar-user">
                                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-                                <span class="kt-header__topbar-username kt-hidden-mobile" id="username-id" style="font-weight: bold!important;text-transform: capitalize">Admin</span>
+                                <span class="kt-header__topbar-username kt-hidden-mobile"
+                                      style="font-weight: bold!important;text-transform: capitalize">Admin</span>
                                 {{--                                <span--}}
                                 {{--                                    class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">A</span>--}}
                             </div>
@@ -199,9 +162,7 @@
             <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
                 <script>
-                    setTimeout(function () {
-                        document.getElementById('username-id').innerHTML = localStorage.getItem('userName');
-                    }, 500);
+
                     function signout() {
                         $.ajax({
                             url: `{{env('APP_URL')}}/signout`,

@@ -1,12 +1,25 @@
 @extends('landing-page.layout')
 <!-- begin:: Content -->
 @section('content')
+    <style>
+        .apply-hover:hover{
+            text-decoration: underline!important;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" style="padding: 30px">
 
         <!--Begin::Dashboard 1-->
 
         <!--Begin::Row-->
+        <div class="container">
+            <div class="d-flex flex-wrap">
+                <p style="font-weight: bold!important;" class="ml-5 p-2">Showing:</p>
+                <p style="background: #61bed9;color:#fff;position: relative;border-radius: 4px" class="ml-3 p-2">Featured</p>
+                <a href="#" style="color:#52a1b8;position: relative;border-radius: 4px;font-weight: 500" class="ml-3 p-2 apply-hover">Popular</a>
+                <a href="#" style="color:#52a1b8;position: relative;border-radius: 4px;font-weight: 500" class="ml-3 p-2 apply-hover">New</a>
+            </div>
+        </div>
         <div class="form-horizontal listing_form">
             <div class="row">
                 <div class="col-xl-12 order-lg-12 order-xl-12 text-center">

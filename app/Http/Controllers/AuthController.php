@@ -27,9 +27,13 @@ class AuthController extends Controller
             $dbUser = User::where('email', $request->email)->first();
             if ($dbUser->password == md5($request->password)) {
                 if ($dbUser->status != 0) {
+                    if (OutletTable::where('user_id',$dbUser->id)->exists()){
+                        Session::put('userId', $dbUser->id);
+                        Session::put('isAdmin', true);
+                        return json_encode(['status' => true, 'message' => 'Login Successfull!','journalist'=>true,'name'=>$dbUser->name]);
+                    }
                     Session::put('userId', $dbUser->id);
-                    Session::put('isAdmin', true);
-                    return json_encode(['status' => true, 'message' => 'Login Successfull!']);
+                    return json_encode(['status' => true, 'message' => 'Login Successfull!','name'=>$dbUser->name]);
                 } else {
                     return json_encode(['status' => false, 'message' => 'Your account is not approved yet!']);
                 }
@@ -68,7 +72,6 @@ class AuthController extends Controller
             $user->password = md5($request->password);
             $user->save();
             Session::put('userId', $user->id);
-            Session::put('isAdmin', true);
             return json_encode(['status' => true, 'message' => 'User registered!']);
         } else {
             return json_encode(['status' => false, 'message' => 'Email already exists!']);

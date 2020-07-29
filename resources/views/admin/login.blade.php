@@ -4,8 +4,9 @@
 <head>
     <base href="../../../">
     <meta charset="utf-8"/>
-    <title>PRESS CHAT</title>
-    <link rel="icon" href="https://cdn.landen.co/kr402kanl96f/assets/4r7y1qi3.png">    <meta name="description" content="Login page example">
+    <title>Login</title>
+    <link rel="icon" href="https://cdn.landen.co/kr402kanl96f/assets/4r7y1qi3.png">
+    <meta name="description" content="Login page example">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--begin::Fonts -->
@@ -32,7 +33,6 @@
     <link href="{{asset('css/skins/brand/dark.css')}}" rel="stylesheet">
     <link href="{{asset('css/skins/aside/dark.css')}}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
     <!--end::Layout Skins -->
     {{--    <link rel="shortcut icon" href=""/>--}}
 </head>
@@ -41,13 +41,13 @@
 
 <!-- begin::Body -->
 <body
-    class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+        class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
 <!-- begin:: Page -->
 <div class="kt-grid kt-grid--ver kt-grid--root">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
         <div
-            class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+                class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
             <!--begin::Aside-->
             <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside"
@@ -59,11 +59,11 @@
                 </div>
                 <div class="zigzagItem zigzagItem--right">
                     <div class="zigzagItem__content"><span class="zigzagItem__number"></span>
-                        <h3 class="zigzagItem__title color-1 weight-text-m" style="color: white!important;">Sign Up for Press Chat</h3><br>
-                        <div class="zigzagItem__text" ><h5 style="color: white!important;">Join Press Chat now — it's free!</h5></div>
+                        <h3 class="zigzagItem__title color-1 weight-text-m" style="color: white!important;">Authentication</h3><br>
+                        <div class="zigzagItem__text" ><h5 style="color: white!important;">Please Login To Further Manage Your Application </h5></div>
                     </div>
-                    <div class="zigzagItem__graphic" style="margin-top: 41px!important"><img src="{{asset('img/undraw_authentication_fsn5.svg')}}"
-                                                                                                       srcset="{{asset('img/undraw_authentication_fsn5.svg')}}" style="width: 500px"></div>
+                    <div class="zigzagItem__graphic" style="margin-top: 41px!important;"><img src="{{asset('img/undraw_steps_ngvm.svg')}}"
+                                                                                              class="media media--image" style="width: 500px"></div>
                 </div>
                 <div class="kt-grid__item">
                     <div class="kt-login__info">
@@ -78,66 +78,60 @@
                     </div>
                 </div>
             </div>
-
-            <!--begin::Aside-->
-
-            <!--begin::Content-->
             <div
-                class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-
-                <!--begin::Head-->
-                <div class="kt-login__head">
-                    <span class="kt-login__signup-label" style="font-size: medium">SignUp as</span>&nbsp;&nbsp;
-                    <a href="{{URL::to('journalist/signup')}}"
-                       style="font-size:medium;text-decoration: underline;color: #0a6aa1">Journalist</a>
-                </div>
-
-                <!--end::Head-->
-
-                <!--begin::Body-->
+                    class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
                 <div class="kt-login__body">
 
                     <!--begin::Signin-->
                     <div class="kt-login__form">
                         <div class="kt-login__title">
-                            <h3 style="color: black;font-weight: bold   ">Sign Up</h3>
+                            <h3 style="font-weight: bold;color: black">Admin Signin</h3>
                         </div>
 
                         <!--begin::Form-->
                         <div class="kt-form" novalidate="novalidate" id="kt_login_form">
+                            <input type="hidden" value="{{$source ?? ''}}" id="sourceUrl">
                             <div class="form-group">
                                 <input class="form-control" type="text" id="user_username" placeholder="Username"
-                                       name="user_username">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="email" id="email" placeholder="Email"
-                                       name="user_username">
+                                       name="user_username" autocomplete="off">
                             </div>
                             <div class="form-group">
                                 <input class="form-control" type="password" id="user_password" placeholder="Password"
                                        name="user_password" autocomplete="off">
                             </div>
+                            <div class="alert alert-warning mt-2" style="display: none; color: white!important;background:rgba(0, 18, 255, 1) "
+                                 id="loginError">
+
+                            </div>
+                            <!--begin::Action-->
                             <div class="kt-login__actions">
-                                <button onclick="register()" id="kt_login_signin_submit"
-                                        class="btn btn-primary btn-elevate kt-login__btn-primary"  style="color:#fff;background-color:rgba(0, 18, 255, 1)!important;border: none!important;">Sign Up
+                                {{--                                <a href="#" class="kt-link kt-login__link-forgot">--}}
+                                {{--                                    Forgot Password ?--}}
+                                {{--                                </a>--}}
+                                <button onclick="login()" id="kt_login_signin_submit"
+                                        class="btn btn-primary btn-elevate kt-login__btn-primary"
+                                        style="color:#fff;background-color:rgba(0, 18, 255, 1)!important;border: none!important;">
+                                    Sign In
                                 </button>
                             </div>
-                            <div>
-                                <p style="color: black!important;">Already have an account? <a
-                                        href="{{URL::to('login')}}" style="font-size: 17px!important;">Login here</a>
-                                </p>
-                            </div>
+                            <!--end::Action-->
                         </div>
                     </div>
 
+                    <!--end::Signin-->
                 </div>
 
+                <!--end::Body-->
             </div>
 
+            <!--end::Content-->
         </div>
     </div>
 </div>
 
+<!-- end:: Page -->
+
+<!-- begin::Global Config(global config for global JS sciprts) -->
 <script>
     var KTAppOptions = {
         "colors": {
@@ -184,57 +178,70 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <script>
-    function register() {
-        let userName = document.getElementById('user_username').value;
-        let email = document.getElementById('email').value;
+    function login() {
+        document.getElementById('loginError').style.display = 'none';
+        let email = document.getElementById('user_username').value;
         let password = document.getElementById('user_password').value;
-        if (userName === "" || userName === null) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'User Name cannot be empty!',
-            });
-            return false;
-        }
-        if (email === "" || email === null) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Email cannot be empty!',
-            });
-            return false;
-        }
-        if (password === "" || password === null) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Password cannot be empty!',
-            });
-            return false;
-        }
         $.ajax({
-            url: `{{env('APP_URL')}}/register`,
+            url: `{{env('APP_URL')}}/admin/signin`,
             type: 'POST',
             dataType: "JSON",
-            data: {userName: userName, email: email, password: password, "_token": "{{ csrf_token() }}"},
+            data: {email: email, password: password, "_token": "{{ csrf_token() }}"},
             beforeSend: function () {
                 $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
             },
             success: function (result) {
                 document.getElementById('user_password').value = '';
-                if (result['status']) {
-                    window.location.href = `{{env('APP_URL')}}/dashboard`
+                if (result.status === true) {
+                    swal.fire({
+                        "title": "",
+                        "text": "Admin SignIn Successfully!",
+                        "type": "success",
+                        "showConfirmButton": true,
+                        "onClose": function (e) {
+                            window.location.href = `{{env('APP_URL')}}/admin-dashboard`
+                        }
+                    })
                 } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Email already exists!',
-                    });
+                    document.getElementById('loginError').innerHTML = result['message'];
+                    document.getElementById('loginError').style.display = 'block';
+                    setTimeout(function () {
+                        document.getElementById('loginError').style.display = 'none';
+                    }, 5000);
                 }
             },
         });
     }
 
+    $(document).ready(function () {
+        window.feed_category_auto_id = 0;
+        $('.kt_login_form').on('submit', function (e) {
+            var form = $('.kt_login_form');
+            var data = form.serializeArray();
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            $.ajax({
+                url: `{{env('APP_URL')}}/admin/login`,
+                type: 'POST',
+                dataType: "JSON",
+                data: data,
+                beforeSend: function () {
+                    $('#main-form').append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+                },
+                success: function (result) {
+                    if (result['status']) {
+                        $(".status-message").html(result['message']);
+                        $(".overlay").remove();
+                    } else {
+                        $(".status-message").html(result['message']);
+                        $(".overlay").remove();
+                    }
+                }
+            });
+        });
+
+
+    });
 </script>
 
 <!--end::Page Scripts -->
